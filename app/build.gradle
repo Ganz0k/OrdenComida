@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace 'mx.edu.potros.ordencomida'
+    namespace 'mx.edu.potros.foodorder'
     compileSdk 33
 
     defaultConfig {
-        applicationId "mx.edu.potros.ordencomida"
+        applicationId "mx.edu.potros.foodorder"
         minSdk 21
         targetSdk 33
         versionCode 1
