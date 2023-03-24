@@ -26,14 +26,14 @@
         android:layout_gravity="center"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="Nombre/Ej. Mesa 3"
+        android:hint="Número de mesa"
         android:layout_marginTop="10dp"
         android:alyout_margiBottom="5dp"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="¿Cántas cuentas desea abrir?"
+        android:text="¿Cuántas cuentas desea abrir?"
         android:textSize="20sp"
         android:layout_gravity="center"
         android:gravity="center"
@@ -84,19 +84,8 @@
         android:layout_height="40dp"
         android:layout_gravity="center"
         android:background="@drawable/round_button"
-        android:text="Continuar"
-        android:textAllCaps="false"
-        android:layout_marginTop="10dp"
-        android:layout_marginBotton="5dp"/>
-
-    <Button
-        android:layout_width="219dp"
-        android:layout_height="40dp"
-        android:layout_gravity="center"
-        android:background="@drawable/round_button"
         android:text="Regresar"
         android:textAllCaps="false"
         android:layout_marginTop="10dp"
         android:layout_marginBotton="5dp" />
-
 </LinearLayout>
