@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/black"
         android:text="Cuenta de Ana"
+        android:fontFamily="@font/inter_regular"
         android:textSize="15sp"
         android:layout_marginLeft="25dp"
         android:layout_marginTop="30dp"
@@ -21,6 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Menú"
+        android:fontFamily="@font/inter_bold"
         android:textSize="20sp"
         android:textColor="@color/black"
         android:layout_gravity="center"
@@ -35,20 +37,22 @@
         android:paddingHorizontal="40dp">
 
         <ImageView
+            android:id="@+id/iv_entradas"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="5dp"
-            android:layout_marginLeft="45dp"
-            android:src="@drawable/ic_launcher_background"/>
+            android:layout_marginLeft="40dp"
+            android:src="@drawable/entradas"/>
 
         <ImageView
+            android:id="@+id/iv_rollos"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="5dp"
-            android:layout_marginLeft="45dp"
-            android:src="@drawable/ic_launcher_background"/>
+            android:layout_marginLeft="55dp"
+            android:src="@drawable/rollos"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -56,8 +60,9 @@
             android:textColor="@color/black"
             android:text="Entradas"
             android:textSize="15sp"
+            android:fontFamily="@font/inter_regular"
             android:layout_marginBottom="15dp"
-            android:layout_marginLeft="65dp"/>
+            android:layout_marginLeft="60dp"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -65,24 +70,27 @@
             android:textColor="@color/black"
             android:text="Rollos"
             android:textSize="15sp"
+            android:fontFamily="@font/inter_regular"
             android:layout_marginBottom="15dp"
-            android:layout_marginLeft="75dp"/>
+            android:layout_marginLeft="85dp"/>
 
         <ImageView
+            android:id="@+id/iv_platillos"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="5dp"
-            android:layout_marginLeft="45dp"
-            android:src="@drawable/ic_launcher_background"/>
+            android:layout_marginLeft="40dp"
+            android:src="@drawable/platillos"/>
 
         <ImageView
+            android:id="@+id/iv_extras"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="5dp"
-            android:layout_marginLeft="45dp"
-            android:src="@drawable/ic_launcher_background"/>
+            android:layout_marginLeft="55dp"
+            android:src="@drawable/extras"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -90,8 +98,9 @@
             android:textColor="@color/black"
             android:text="Platillos"
             android:textSize="15sp"
+            android:fontFamily="@font/inter_regular"
             android:layout_marginBottom="15dp"
-            android:layout_marginLeft="68dp"/>
+            android:layout_marginLeft="63dp"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -99,24 +108,27 @@
             android:textColor="@color/black"
             android:text="Extras"
             android:textSize="15sp"
+            android:fontFamily="@font/inter_regular"
             android:layout_marginBottom="15dp"
-            android:layout_marginLeft="75dp"/>
+            android:layout_marginLeft="85dp"/>
 
         <ImageView
+            android:id="@+id/iv_postres"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="5dp"
-            android:layout_marginLeft="45dp"
-            android:src="@drawable/ic_launcher_background"/>
+            android:layout_marginLeft="40dp"
+            android:src="@drawable/postres"/>
 
         <ImageView
+            android:id="@+id/iv_bebidas"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="5dp"
-            android:layout_marginLeft="45dp"
-            android:src="@drawable/ic_launcher_background"/>
+            android:layout_marginLeft="55dp"
+            android:src="@drawable/bebidas"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -124,8 +136,9 @@
             android:textColor="@color/black"
             android:text="Postres"
             android:textSize="15sp"
+            android:fontFamily="@font/inter_regular"
             android:layout_marginBottom="15dp"
-            android:layout_marginLeft="68dp"/>
+            android:layout_marginLeft="63dp"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -133,8 +146,9 @@
             android:textColor="@color/black"
             android:text="Bebidas"
             android:textSize="15sp"
+            android:fontFamily="@font/inter_regular"
             android:layout_marginBottom="15dp"
-            android:layout_marginLeft="68dp"/>
+            android:layout_marginLeft="78dp"/>
 
     </GridLayout>
 

@@ -11,22 +11,24 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Agregar nueva mesa"
+        android:fontFamily="@font/inter_bold"
         android:textSize="20sp"
         android:layout_gravity="center"
         android:gravity="center"
         android:textColor="@color/black"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="50dp"
         android:layout_marginBottom="5dp"/>
 
     <EditText
-        android:id="@+id/nombreMesa"
+        android:id="@+id/et_numero_mesa"
         android:layout_width="249dp"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
+        android:textSize="17sp"
         android:layout_gravity="center"
         android:ems="10"
         android:inputType="textPersonName"
         android:hint="Número de mesa"
+        android:fontFamily="@font/inter_regular"
         android:layout_marginTop="10dp"
         android:alyout_margiBottom="5dp"/>
 
@@ -34,16 +36,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="¿Cuántas cuentas desea abrir?"
-        android:textSize="20sp"
+        android:fontFamily="@font/inter_semibold"
+        android:textSize="17sp"
         android:layout_gravity="center"
         android:gravity="center"
         android:textColor="@color/black"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:layout_marginBottom="5dp"/>
 
     <ImageView
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:id="@+id/iv_cuenta"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="5dp"
@@ -53,7 +57,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="1 Cuenta"
-        android:textSize="20sp"
+        android:fontFamily="@font/inter_regular"
+        android:textSize="15sp"
         android:layout_gravity="center"
         android:gravity="center"
         android:textColor="@color/black"
@@ -61,10 +66,11 @@
         android:layout_marginBottom="5dp"/>
 
     <ImageView
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:id="@+id/iv_varias_cuentas"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_gravity="center"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="40dp"
         android:layout_marginBottom="5dp"
         android:src="@drawable/variascuentas"/>
 
@@ -72,7 +78,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Varias cuentas"
-        android:textSize="20sp"
+        android:fontFamily="@font/inter_regular"
+        android:textSize="14sp"
         android:layout_gravity="center"
         android:gravity="center"
         android:textColor="@color/black"
@@ -80,11 +87,13 @@
         android:layout_marginBottom="5dp"/>
 
     <Button
+        android:id="@+id/btn_regresar"
         android:layout_width="219dp"
         android:layout_height="40dp"
         android:layout_gravity="center"
         android:background="@drawable/round_button"
         android:text="Regresar"
+        android:fontFamily="@font/inter_semibold"
         android:textAllCaps="false"
         android:layout_marginTop="10dp"
         android:layout_marginBotton="5dp" />
