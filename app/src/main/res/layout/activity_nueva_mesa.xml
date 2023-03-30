@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/naranjaClaro"
     tools:context=".NuevaMesa">
 
     <TextView
@@ -15,14 +16,17 @@
         android:textSize="20sp"
         android:layout_gravity="center"
         android:gravity="center"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:layout_marginTop="50dp"
         android:layout_marginBottom="5dp"/>
 
     <EditText
         android:id="@+id/et_numero_mesa"
         android:layout_width="249dp"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:background="@drawable/custom_input"
         android:textSize="17sp"
         android:layout_gravity="center"
         android:ems="10"
@@ -40,7 +44,7 @@
         android:textSize="17sp"
         android:layout_gravity="center"
         android:gravity="center"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="5dp"/>
 
@@ -61,7 +65,7 @@
         android:textSize="15sp"
         android:layout_gravity="center"
         android:gravity="center"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="5dp"/>
 
@@ -82,7 +86,7 @@
         android:textSize="14sp"
         android:layout_gravity="center"
         android:gravity="center"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="5dp"/>
 
@@ -94,6 +98,7 @@
         android:background="@drawable/round_button"
         android:text="Regresar"
         android:fontFamily="@font/inter_semibold"
+        android:textColor="@color/white"
         android:textAllCaps="false"
         android:layout_marginTop="10dp"
         android:layout_marginBotton="5dp" />

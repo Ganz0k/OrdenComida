@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/naranjaClaro"
     android:orientation="vertical"
     tools:context=".Menu">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:text="Cuenta de Ana"
         android:fontFamily="@font/inter_regular"
         android:textSize="15sp"
@@ -24,7 +25,7 @@
         android:text="Menú"
         android:fontFamily="@font/inter_bold"
         android:textSize="20sp"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:layout_gravity="center"
         android:gravity="center"
         android:layout_marginTop="15dp"/>
@@ -57,7 +58,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:text="Entradas"
             android:textSize="15sp"
             android:fontFamily="@font/inter_regular"
@@ -67,7 +68,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:text="Rollos"
             android:textSize="15sp"
             android:fontFamily="@font/inter_regular"
@@ -95,7 +96,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:text="Platillos"
             android:textSize="15sp"
             android:fontFamily="@font/inter_regular"
@@ -105,7 +106,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:text="Extras"
             android:textSize="15sp"
             android:fontFamily="@font/inter_regular"
@@ -133,7 +134,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:text="Postres"
             android:textSize="15sp"
             android:fontFamily="@font/inter_regular"
@@ -143,7 +144,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:text="Bebidas"
             android:textSize="15sp"
             android:fontFamily="@font/inter_regular"
