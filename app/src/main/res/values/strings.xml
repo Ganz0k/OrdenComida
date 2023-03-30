@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">FoodOrder</string>
+    <string name="cerrarSesion">Cerrar sesión</string>
+    <string name="tituloMenuPpal">Mis mesas</string>
+    <string name="ordenar">Ordenar</string>
+    <string name="salir">Salir</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="txtSalir">¿Seguro que desea salir?</string>
+    <string name="ordenLista">Orden lista</string>
 </resources>
