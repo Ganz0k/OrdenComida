@@ -18,37 +18,37 @@ class Menu : AppCompatActivity() {
         val ivBebidas: ImageView = findViewById(R.id.iv_bebidas)
 
         ivEntradas.setOnClickListener {
-            var intent: Intent = Intent(this, ) //añadir siguiente pantalla al final del constructor
+            var intent: Intent = Intent(this, Catalogo::class.java) //añadir siguiente pantalla al final del constructor
             intent.putExtra("tipo", "entradas")
             startActivity(intent)
         }
 
         ivRollos.setOnClickListener {
-            var intent: Intent = Intent(this, ) //añadir siguiente pantalla al final del constructor
+            var intent: Intent = Intent(this, Catalogo::class.java) //añadir siguiente pantalla al final del constructor
             intent.putExtra("tipo", "rollos")
             startActivity(intent)
         }
 
         ivPlatillos.setOnClickListener {
-            var intent: Intent = Intent(this, ) //añadir siguiente pantalla al final del constructor
+            var intent: Intent = Intent(this, Catalogo::class.java) //añadir siguiente pantalla al final del constructor
             intent.putExtra("tipo", "platillos")
             startActivity(intent)
         }
 
         ivExtras.setOnClickListener {
-            var intent: Intent = Intent(this, ) //añadir siguiente pantalla al final del constructor
+            var intent: Intent = Intent(this, Catalogo::class.java) //añadir siguiente pantalla al final del constructor
             intent.putExtra("tipo", "extras")
             startActivity(intent)
         }
 
         ivPostres.setOnClickListener {
-            var intent: Intent = Intent(this, ) //añadir siguiente pantalla al final del constructor
+            var intent: Intent = Intent(this, Catalogo::class.java) //añadir siguiente pantalla al final del constructor
             intent.putExtra("tipo", "postres")
             startActivity(intent)
         }
 
         ivBebidas.setOnClickListener {
-            var intent: Intent = Intent(this, ) //añadir siguiente pantalla al final del constructor
+            var intent: Intent = Intent(this, Catalogo::class.java) //añadir siguiente pantalla al final del constructor
             intent.putExtra("tipo", "bebidas")
             startActivity(intent)
         }

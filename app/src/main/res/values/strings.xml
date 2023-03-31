@@ -26,4 +26,30 @@
     <string name="password">Contraseña</string>
     <string name="verifyPassword">Verificar contraseña</string>
     <string name="crearCuenta">Crear cuenta</string>
+    <string name="txtCambioContra">Cambio de contraseña</string>
+    <string name="nuevaContra">Nueva contraseña</string>
+    <string name="verificarContra">Verificar contraseña</string>
+    <string name="guardar">Guardar</string>
+    <string name="codigoCorrecto">Código correcto</string>
+    <string name="volverEnviar">Volver a enviar</string>
+    <string name="codigoIncorrecto">Código incorrecto</string>
+    <string name="contraGuardada">Contraseña guardada</string>
+    <string name="usuario">Usuario</string>
+    <string name="contraOlvidada">¿Olvidaste tu contraseña?</string>
+    <string name="iniciaSesion">Inciar Sesión</string>
+    <string name="creaCuenta">Crear una cuenta</string>
+    <string name="consultaCorreo">Consulta tu correo</string>
+    <string name="verificacion">Food Order ha mandado un código a tu correo para verificar que seas tu.</string>
+    <string name="ingresaCodigo">Ingresa el código</string>
+    <string name="verificar">Verificar</string>
+    <string name="agregar">Agregar</string>
+    <string name="title_activity_especificacion_teriyaki">EspecificacionTeriyaki</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 </resources>

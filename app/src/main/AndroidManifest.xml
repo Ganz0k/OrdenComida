@@ -12,6 +12,33 @@
         android:theme="@style/Theme.FoodOrder"
         tools:targetApi="31">
         <activity
+            android:name=".EspecificacionTeriyaki"
+            android:exported="false" />
+        <activity
+            android:name=".EspecificacionRollo"
+            android:exported="false" />
+        <activity
+            android:name=".EspecificacionBoneless"
+            android:exported="false" />
+        <activity
+            android:name=".LoginVerificacion"
+            android:exported="false" />
+        <activity
+            android:name=".ContraGuardada"
+            android:exported="false" />
+        <activity
+            android:name=".CodigoIncorrecto"
+            android:exported="false" />
+        <activity
+            android:name=".CodigoCorrecto"
+            android:exported="false" />
+        <activity
+            android:name=".Catalogo"
+            android:exported="false" />
+        <activity
+            android:name=".CambioContra"
+            android:exported="false" />
+        <activity
             android:name=".MenuPrincipal"
             android:exported="false" />
         <activity
