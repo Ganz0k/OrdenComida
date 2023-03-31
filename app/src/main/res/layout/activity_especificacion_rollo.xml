@@ -65,8 +65,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="35dp"
-
-
+        android:layout_marginTop="10dp"
         android:fontFamily="@font/inter_bold"
         android:text="¿Empanizado o natural?"
         android:textColor="@color/white"
@@ -93,12 +92,18 @@
         android:text="Mitad y mitad"
         android:textColor="@color/white" />
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginRight="15dp"
+        android:background="@color/white"
+        android:layout_marginTop="5dp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="35dp"
-
+        android:layout_marginTop="10dp"
         android:fontFamily="@font/inter_bold"
         android:text="¿Con algo o sin alga?"
         android:textColor="@color/white"
@@ -118,11 +123,18 @@
         android:text="sin alga"
         android:textColor="@color/white" />
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginRight="15dp"
+        android:background="@color/white"
+        android:layout_marginTop="5dp"/>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="35dp"
-
+        android:layout_marginTop="10dp"
         android:fontFamily="@font/inter_bold"
         android:text="¿Desea agregar un ingrediente extra?"
         android:textColor="@color/white"
@@ -176,37 +188,31 @@
         android:layout_height="23dp"
         android:text="Gratinado"
         android:textColor="@color/white" />
-    <GridLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+
+    <Button
+        android:id="@+id/btn_especificacion_agregar"
+        android:layout_width="128dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
         android:layout_marginTop="10dp"
-        android:columnCount="2"
-        android:paddingHorizontal="40dp">
+        android:background="@drawable/round_button"
+        android:fontFamily="@font/inter_semibold"
+        android:text="@string/agregar"
+        android:textSize="11sp"
+        android:textColor="@color/white"
+        android:textAllCaps="false"/>
 
-        <Button
-            android:id="@+id/btn_especificacion_agregar"
-            android:layout_width="128dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/round_button"
-            android:fontFamily="@font/inter_semibold"
-            android:text="@string/agregar"
-            android:textSize="11sp"
-            android:textColor="@color/white"/>
-
-        <Button
-            android:id="@+id/btn_especificacion_regresar"
-            android:layout_width="128dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/round_button"
-            android:fontFamily="@font/inter_semibold"
-            android:text="@string/regresar"
-            android:textSize="11sp"
-            android:textColor="@color/white"/>
-    </GridLayout>
-
+    <Button
+        android:id="@+id/btn_especificacion_regresar"
+        android:layout_width="128dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/round_button"
+        android:fontFamily="@font/inter_semibold"
+        android:text="@string/regresar"
+        android:textSize="11sp"
+        android:textColor="@color/white"
+        android:textAllCaps="false"/>
 
 </LinearLayout>

@@ -7,15 +7,15 @@
     android:background="@color/naranjaClaro"
     android:orientation="vertical"
     android:padding="3pt"
-    tools:context=".EspecificacionBoneless">
+    tools:context=".EspecificacionChickeMongolia">
 
 
     <ImageView
-        android:id="@+id/iv_especificarEntrada"
+        android:id="@+id/iv_chicken"
         android:layout_width="129dp"
         android:layout_height="102dp"
         android:layout_gravity="center"
-        app:srcCompat="@drawable/boneless" />
+        app:srcCompat="@drawable/chickenmongolia" />
 
     <GridLayout
         android:layout_width="match_parent"
@@ -24,27 +24,26 @@
         android:columnCount="2"
         android:paddingHorizontal="40dp">
 
-
         <TextView
-            android:id="@+id/tv_nombrePlatillo"
+            android:id="@+id/tv_nombre_chicken_mongolia"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginLeft="40dp"
+            android:layout_marginLeft="70dp"
             android:fontFamily="@font/inter_bold"
-            android:text="Boneless"
+            android:text="Chicken mongolia"
             android:textColor="@color/white"
-            android:textSize="15sp" />
+            android:textSize="10sp" />
 
 
         <TextView
-            android:id="@+id/tv_precio"
+            android:id="@+id/tv_especificacionPrecio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
 
             android:fontFamily="@font/inter_regular"
-            android:text="$110.00"
+            android:text="$170.00"
             android:textColor="@color/white"
             android:textSize="15sp" />
 
@@ -52,11 +51,12 @@
     </GridLayout>
 
     <TextView
-        android:id="@+id/tv_descripcion"
+        android:id="@+id/tv_especificacionDescripcion"
         android:layout_width="325dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:fontFamily="@font/inter_regular"
+        android:text=""
         android:textColor="@color/white"
         android:textSize="13dp" />
 
@@ -67,7 +67,7 @@
 
 
         android:fontFamily="@font/inter_bold"
-        android:text="Eliga la salsa de tu elección"
+        android:text="Elige tu arroz"
         android:textColor="@color/white"
         android:textSize="14sp" />
 
@@ -75,21 +75,45 @@
         android:id="@+id/checkBox"
         android:layout_width="match_parent"
         android:layout_height="23dp"
-        android:text="BBQ"
+        android:text="Arroz Blanco"
         android:textColor="@color/white" />
 
     <CheckBox
         android:id="@+id/checkBox2"
         android:layout_width="match_parent"
         android:layout_height="23dp"
-        android:text="Búfalo"
+        android:text="Arroz frito"
         android:textColor="@color/white" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginRight="15dp"
+        android:background="@color/white"
+        android:layout_marginTop="5dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/inter_bold"
+        android:text="Elige tu preparación"
+        android:textColor="@color/white"
+        android:textSize="14sp" />
 
     <CheckBox
         android:id="@+id/checkBox3"
         android:layout_width="match_parent"
         android:layout_height="23dp"
-        android:text="Mixto"
+        android:text="Al vapor"
+        android:textColor="@color/white" />
+
+    <CheckBox
+        android:id="@+id/checkBox4"
+        android:layout_width="match_parent"
+        android:layout_height="23dp"
+        android:text="Salteadas"
         android:textColor="@color/white" />
 
     <View
@@ -104,7 +128,7 @@
         android:layout_width="128dp"
         android:layout_height="40dp"
         android:layout_gravity="center"
-        android:layout_marginTop="340dp"
+        android:layout_marginTop="250dp"
         android:background="@drawable/round_button"
         android:fontFamily="@font/inter_semibold"
         android:text="@string/agregar"

@@ -7,11 +7,11 @@
     android:background="@color/naranjaClaro"
     android:orientation="vertical"
     android:padding="3pt"
-    tools:context=".EspecificacionRollo">
+    tools:context=".EspecificacionTeriyaki">
 
 
     <ImageView
-        android:id="@+id/iv_rollo"
+        android:id="@+id/iv_teriyaki"
         android:layout_width="129dp"
         android:layout_height="102dp"
         android:layout_gravity="center"
@@ -222,37 +222,29 @@
             android:textColor="@color/white"/>
     </GridLayout>
 
-    <GridLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+    <Button
+        android:id="@+id/btn_especificacion_agregar"
+        android:layout_width="128dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/round_button"
+        android:fontFamily="@font/inter_semibold"
+        android:text="@string/agregar"
+        android:textSize="11sp"
+        android:textColor="@color/white"/>
+
+    <Button
+        android:id="@+id/btn_especificacion_regresar"
+        android:layout_width="128dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
         android:layout_marginTop="10dp"
-        android:columnCount="2"
-        android:paddingHorizontal="40dp">
-
-        <Button
-            android:id="@+id/btn_especificacion_agregar"
-            android:layout_width="128dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/round_button"
-            android:fontFamily="@font/inter_semibold"
-            android:text="@string/agregar"
-            android:textSize="11sp"
-            android:textColor="@color/white"/>
-
-        <Button
-            android:id="@+id/btn_especificacion_regresar"
-            android:layout_width="128dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/round_button"
-            android:fontFamily="@font/inter_semibold"
-            android:text="@string/regresar"
-            android:textSize="11sp"
-            android:textColor="@color/white"/>
-    </GridLayout>
+        android:background="@drawable/round_button"
+        android:fontFamily="@font/inter_semibold"
+        android:text="@string/regresar"
+        android:textSize="11sp"
+        android:textColor="@color/white"/>
 
 
 </LinearLayout>
