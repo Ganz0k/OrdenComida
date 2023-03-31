@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 
 class Confirmed : AppCompatActivity() {
@@ -12,14 +13,14 @@ class Confirmed : AppCompatActivity() {
         setContentView(R.layout.activity_confirmed)
 
         var tipo: String? = intent.getStringExtra("tipo")
-        val image: ImageView = findViewById(R.id.imageView)
         val textConfirm: TextView = findViewById(R.id.text_confirm)
+        val linear: LinearLayout = findViewById(R.id.ly_confirmado)
 
         when (tipo) {
             "cuenta" -> {
                 textConfirm.setText("Cuenta confirmada")
 
-                image.setOnClickListener {
+                linear.setOnClickListener {
                     var intent = Intent(this, Menu::class.java)
                     startActivity(intent)
                 }
@@ -28,7 +29,7 @@ class Confirmed : AppCompatActivity() {
             "codigo" -> {
                 textConfirm.setText("Código correcto")
 
-                image.setOnClickListener {
+                linear.setOnClickListener {
                     var intent = Intent(this, CambioContra::class.java)
                     startActivity(intent)
                 }
@@ -37,7 +38,7 @@ class Confirmed : AppCompatActivity() {
             "contra" -> {
                 textConfirm.setText("Contraseña guardada")
 
-                image.setOnClickListener {
+                linear.setOnClickListener {
                     var intent = Intent(this, Bienvenido::class.java)
                     startActivity(intent)
                 }
@@ -46,7 +47,7 @@ class Confirmed : AppCompatActivity() {
             "pedido" -> {
                 textConfirm.setText("Tu pedido ha sido enviado")
 
-                image.setOnClickListener {
+                linear.setOnClickListener {
                     var intent = Intent(this, MenuPrincipal::class.java)
                     startActivity(intent)
                 }
@@ -55,7 +56,7 @@ class Confirmed : AppCompatActivity() {
             "cobrar" -> {
                 textConfirm.setText("La cuenta ha sido enviada a caja")
 
-                image.setOnClickListener {
+                linear.setOnClickListener {
                     var intent = Intent(this, MenuPrincipal::class.java)
                     startActivity(intent)
                 }

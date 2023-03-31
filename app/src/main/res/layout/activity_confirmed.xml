@@ -10,6 +10,7 @@
 
 
     <LinearLayout
+        android:id="@+id/ly_confirmado"
         android:layout_width="345dp"
         android:layout_height="290dp"
         android:layout_gravity="center"
