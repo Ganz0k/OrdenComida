@@ -28,6 +28,7 @@
             app:srcCompat="@drawable/verificacion" />
 
         <TextView
+            android:id="@+id/text_confirm"
             android:layout_width="238dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

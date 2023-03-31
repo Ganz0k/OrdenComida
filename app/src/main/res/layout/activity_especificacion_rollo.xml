@@ -57,7 +57,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:fontFamily="@font/inter_regular"
-        android:text="Verduras cebolla, brócoli,zanahoria,apio,calabaza con arroz, preparación e ingrediente a elegir, bañado con salsa teriyaki y ajonjoli espolvoreado"
+        android:text=""
         android:textColor="@color/white"
         android:textSize="13dp" />
 

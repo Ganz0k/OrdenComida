@@ -40,7 +40,9 @@
         android:background="@drawable/round_button"
         android:fontFamily="@font/inter_semibold"
         android:text="@string/regresar"
-        android:textSize="11sp" />
+        android:textSize="11sp"
+        android:textAllCaps="false"
+        android:textColor="@color/white"/>
 
 
 </LinearLayout>

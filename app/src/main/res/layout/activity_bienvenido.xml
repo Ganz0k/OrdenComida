@@ -9,6 +9,7 @@
     tools:context=".Bienvenido">
 
     <ImageView
+        android:id="@+id/image_bienvenido"
         android:layout_width="344dp"
         android:layout_height="215dp"
         android:layout_gravity="center"

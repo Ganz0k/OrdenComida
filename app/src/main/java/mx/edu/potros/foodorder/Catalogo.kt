@@ -55,8 +55,7 @@ class Catalogo : AppCompatActivity() {
         }
 
         button.setOnClickListener {
-            var intento = Intent(this, Menu::class.java)
-            this.startActivity(intento)
+            finish()
         }
     }
 
@@ -143,12 +142,35 @@ class Catalogo : AppCompatActivity() {
                     context!!.startActivity(intent)
                 }
             } else if (option.text.equals("Rollos")) {
-                var intent = Intent(context, EspecificacionRollo::class.java)
-                intent.putExtra("nombre", platillo.nombre)
-                intent.putExtra("decripcion", platillo.descripcion)
-                intent.putExtra("imagen", platillo.image)
-                intent.putExtra("precio", platillo.precio)
-                context!!.startActivity(intent)
+                vista.setOnClickListener {
+                    var intent = Intent(context, EspecificacionRollo::class.java)
+                    intent.putExtra("nombre", platillo.nombre)
+                    intent.putExtra("decripcion", platillo.descripcion)
+                    intent.putExtra("imagen", platillo.image)
+                    intent.putExtra("precio", platillo.precio)
+                    context!!.startActivity(intent)
+                }
+            } else if(platillo.image == R.drawable.chickenmongolia) {
+                vista.setOnClickListener {
+                    var intent = Intent(context, EspecificacionChickeMongolia::class.java)
+                    intent.putExtra("descripcion", platillo.descripcion)
+                    context!!.startActivity(intent)
+                }
+            } else if (platillo.image == R.drawable.teriyaki) {
+                vista.setOnClickListener {
+                    var intent = Intent(context, EspecificacionTeriyaki::class.java)
+                    intent.putExtra("descripcion", platillo.descripcion)
+                    context!!.startActivity(intent)
+                }
+            } else {
+                vista.setOnClickListener {
+                    var intent = Intent(context, EspecificacionGenerica::class.java)
+                    intent.putExtra("nombre", platillo.nombre)
+                    intent.putExtra("decripcion", platillo.descripcion)
+                    intent.putExtra("imagen", platillo.image)
+                    intent.putExtra("precio", platillo.precio)
+                    context!!.startActivity(intent)
+                }
             }
 
             return vista

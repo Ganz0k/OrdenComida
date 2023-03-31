@@ -14,7 +14,8 @@ class MenuPrincipalLista : AppCompatActivity() {
         val btnOrdenar: Button = findViewById(R.id.btn_ordenar)
 
         btnOrdenar.setOnClickListener{
-            var intent: Intent = Intent(this, Menu::class.java)
+            var intent: Intent = Intent(this, CodigoCorrecto::class.java)
+            intent.putExtra("tipo", "cuenta")
             startActivity(intent)
         }
     }

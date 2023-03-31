@@ -133,6 +133,7 @@
         android:fontFamily="@font/inter_semibold"
         android:text="@string/agregar"
         android:textSize="11sp"
+        android:textAllCaps="false"
         android:textColor="@color/white"/>
 
     <Button
@@ -145,6 +146,7 @@
         android:fontFamily="@font/inter_semibold"
         android:text="@string/regresar"
         android:textSize="11sp"
+        android:textAllCaps="false"
         android:textColor="@color/white"/>
 
 </LinearLayout>

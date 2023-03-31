@@ -14,6 +14,7 @@ class LoginVerificacion : AppCompatActivity() {
 
         btnVerificaLogin.setOnClickListener {
             var intent = Intent(this, CodigoIncorrecto::class.java)
+            intent.putExtra("tipo", "codigo")
             startActivity(intent)
         }
     }

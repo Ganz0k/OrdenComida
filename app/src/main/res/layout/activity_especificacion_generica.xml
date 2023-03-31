@@ -83,6 +83,7 @@
             android:layout_marginLeft="60dp"/>
 
         <TextView
+            android:id="@+id/tv_cantidad"
             android:layout_width="128dp"
             android:layout_height="40dp"
             android:text="1"
@@ -113,6 +114,7 @@
         android:background="@drawable/round_button"
         android:fontFamily="@font/inter_semibold"
         android:text="@string/agregar"
+        android:textAllCaps="false"
         android:textSize="11sp"
         android:textColor="@color/white"/>
 
@@ -125,6 +127,7 @@
         android:background="@drawable/round_button"
         android:fontFamily="@font/inter_semibold"
         android:text="@string/regresar"
+        android:textAllCaps="false"
         android:textSize="11sp"
         android:textColor="@color/white"/>
 
