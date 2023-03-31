@@ -27,7 +27,6 @@
     <string name="password">Contraseña</string>
     <string name="verifyPassword">Verificar contraseña</string>
     <string name="crearCuenta">Crear cuenta</string>
-
     <string name="txtCambioContra">Cambio de contraseña</string>
     <string name="nuevaContra">Nueva contraseña</string>
     <string name="verificarContra">Verificar contraseña</string>
@@ -47,5 +46,12 @@
     <string name="agregar">Agregar</string>
     <string name="costoCuenta">Costo de platillo</string>
     <string name="enviarPedido">Enviar pedido</string>
-    <string name="title_activity_especificacion_generica">EspecificacionGenerica</string>
+    <string name="seguirAgregando">Seguir agregando</string>
+    <string name="finCuenta">Finalizar cuenta</string>
+    <string name="agregaCuenta">Agregar cuenta</string>
+    <string name="irPedido">Ir al pedido</string>
+    <string name="confirmaElimina">¿Seguro que desea eliminar el producto?</string>
+    <string name="eliminar">Eliminar</string>
+    <string name="confirmaCobra">¿Seguro que desea cobrar la cuenta?</string>
+    <string name="aceptar">Aceptar</string>
 </resources>

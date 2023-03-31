@@ -12,6 +12,18 @@
         android:theme="@style/Theme.FoodOrder"
         tools:targetApi="31">
         <activity
+            android:name=".CobraCuenta"
+            android:exported="false" />
+        <activity
+            android:name=".EliminaProducto"
+            android:exported="false" />
+        <activity
+            android:name=".FinCuenta"
+            android:exported="false" />
+        <activity
+            android:name=".SeguirAgregando"
+            android:exported="false" />
+        <activity
             android:name=".EspecificacionGenerica"
             android:exported="false" />
         <activity
