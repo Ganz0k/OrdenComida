@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/naranjaClaro"
-    tools:context=".Registro">
+    tools:context=".CambioContra">
 
 
     <TextView
@@ -40,7 +40,7 @@
 
 
     <EditText
-        android:id="@+id/inpud_verify_password"
+        android:id="@+id/input_verify_password"
         android:layout_width="295dp"
         android:layout_height="40dp"
         android:paddingStart="12dp"
@@ -54,14 +54,24 @@
         android:fontFamily="@font/inter_regular"
         android:layout_marginBottom="15dp"/>
 
-
+    <TextView
+        android:id="@+id/tv_invalidpass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="La contraseña no coincide"
+        android:fontFamily="@font/inter_regular"
+        android:textSize="14sp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textColor="@color/grisClaro"
+        android:layout_marginBottom="25dp" />
 
     <Button
         android:id="@+id/btn_guardar"
         android:layout_width="219dp"
         android:layout_height="40dp"
         android:layout_gravity="center"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="5dp"
         android:background="@drawable/round_button"
         android:fontFamily="@font/inter_semibold"
         android:text="@string/guardar"
