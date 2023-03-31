@@ -3,6 +3,7 @@
     <string name="cerrarSesion">Cerrar sesión</string>
     <string name="tituloMenuPpal">Mis mesas</string>
     <string name="ordenar">Ordenar</string>
+    <string name="cobrar">Cobrar</string>
     <string name="salir">Salir</string>
     <string name="cancelar">Cancelar</string>
     <string name="regresar">Regresar</string>
@@ -26,6 +27,7 @@
     <string name="password">Contraseña</string>
     <string name="verifyPassword">Verificar contraseña</string>
     <string name="crearCuenta">Crear cuenta</string>
+
     <string name="txtCambioContra">Cambio de contraseña</string>
     <string name="nuevaContra">Nueva contraseña</string>
     <string name="verificarContra">Verificar contraseña</string>
@@ -49,7 +51,8 @@
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
-
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="costoCuenta">Costo de platillo</string>
+    <string name="enviarPedido">Enviar pedido</string>
 </resources>
