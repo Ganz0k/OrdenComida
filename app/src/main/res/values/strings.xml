@@ -44,7 +44,7 @@
     <string name="ingresaCodigo">Ingresa el código</string>
     <string name="verificar">Verificar</string>
     <string name="agregar">Agregar</string>
-    <string name="costoCuenta">Costo de platillo</string>
+    <string name="costoCuenta">Costo</string>
     <string name="enviarPedido">Enviar pedido</string>
     <string name="seguirAgregando">Seguir agregando</string>
     <string name="finCuenta">Finalizar cuenta</string>
