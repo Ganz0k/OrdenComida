@@ -14,7 +14,7 @@ class CodigoIncorrecto : AppCompatActivity() {
         val btnRegresar: Button = findViewById(R.id.btn_regresar)
 
         btnVolverEnviar.setOnClickListener {
-            var intent = Intent(this, CodigoCorrecto::class.java)
+            var intent = Intent(this, Confirmed::class.java)
             startActivity(intent)
         }
 

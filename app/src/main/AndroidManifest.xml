@@ -42,13 +42,10 @@
             android:name=".LoginVerificacion"
             android:exported="false" />
         <activity
-            android:name=".ContraGuardada"
-            android:exported="false" />
-        <activity
             android:name=".CodigoIncorrecto"
             android:exported="false" />
         <activity
-            android:name=".CodigoCorrecto"
+            android:name=".Confirmed"
             android:exported="false" />
         <activity
             android:name=".Catalogo"

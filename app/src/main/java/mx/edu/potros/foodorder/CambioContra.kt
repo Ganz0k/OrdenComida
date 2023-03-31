@@ -13,7 +13,8 @@ class CambioContra : AppCompatActivity() {
         val btnGuardar: Button = findViewById(R.id.btn_guardar)
 
         btnGuardar.setOnClickListener {
-            var intent = Intent(this, ContraGuardada::class.java)
+            var intent = Intent(this, Confirmed::class.java)
+            intent.putExtra("tipo", "contra")
             startActivity(intent)
         }
     }
