@@ -12,7 +12,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Registro"
+        android:text="@string/registro"
         android:fontFamily="@font/inter_bold"
         android:textSize="20sp"
         android:layout_gravity="center"
@@ -32,7 +32,7 @@
         android:layout_gravity="center"
         android:ems="10"
         android:inputType="textEmailAddress"
-        android:hint="Correo"
+        android:hint="@string/correo"
         android:fontFamily="@font/inter_regular"
         android:layout_marginBottom="25dp"/>
 
@@ -47,7 +47,7 @@
         android:layout_gravity="center"
         android:ems="10"
         android:inputType="textPassword"
-        android:hint="Contraseña"
+        android:hint="@string/password"
         android:fontFamily="@font/inter_regular"
         android:layout_marginBottom="25dp" />
 
@@ -62,7 +62,7 @@
         android:layout_gravity="center"
         android:ems="10"
         android:inputType="textPassword"
-        android:hint="Verificar contraseña"
+        android:hint="@string/verifyPassword"
         android:fontFamily="@font/inter_regular"
         android:layout_marginBottom="15dp"/>
 
@@ -84,7 +84,7 @@
         android:layout_height="40dp"
         android:layout_gravity="center"
         android:background="@drawable/round_button"
-        android:text="Crear cuenta"
+        android:text="@string/crearCuenta"
         android:fontFamily="@font/inter_semibold"
         android:textColor="@color/white"
         android:textAllCaps="false" />

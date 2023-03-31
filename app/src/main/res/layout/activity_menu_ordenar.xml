@@ -32,9 +32,9 @@
         android:layout_gravity="center"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="Nombre de la cuenta"
+        android:hint="@string/txtNombreCuenta"
         android:layout_marginTop="10dp"
-        android:alyout_margiBottom="5dp"/>
+        android:layout_marginBottom="5dp"/>
 
     <Button
         android:id="@+id/btn_ordenar"
@@ -42,12 +42,12 @@
         android:layout_height="40dp"
         android:layout_gravity="center"
         android:background="@drawable/round_button"
-        android:text="Ordenar"
+        android:text="@string/ordenar"
         android:fontFamily="@font/inter_semibold"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:layout_marginTop="25dp"
-        android:layout_marginBotton="5dp" />
+        android:layout_marginBottom="5dp" />
 
     <Button
         android:id="@+id/btn_regresar"
@@ -55,11 +55,11 @@
         android:layout_height="40dp"
         android:layout_gravity="center"
         android:background="@drawable/round_button"
-        android:text="Regresar"
+        android:text="@string/regresar"
         android:fontFamily="@font/inter_semibold"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:layout_marginTop="15dp"
-        android:layout_marginBotton="5dp" />
+        android:layout_marginBottom="5dp" />
 
 </LinearLayout>

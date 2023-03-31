@@ -5,6 +5,25 @@
     <string name="ordenar">Ordenar</string>
     <string name="salir">Salir</string>
     <string name="cancelar">Cancelar</string>
+    <string name="regresar">Regresar</string>
     <string name="txtSalir">¿Seguro que desea salir?</string>
     <string name="ordenLista">Orden lista</string>
+    <string name="entradas">Entradas</string>
+    <string name="rollos">Rollos</string>
+    <string name="platillos">Platillos</string>
+    <string name="extras">Extras</string>
+    <string name="postres">Postres</string>
+    <string name="bebidas">Bebidas</string>
+    <string name="txtMenu">Menú</string>
+    <string name="txtNombreCuenta">Nombre de la cuenta</string>
+    <string name="txtUnaCuenta">1 Cuenta</string>
+    <string name="txtVariasCuentas">Varias cuentas</string>
+    <string name="txtAbrirCuentas">¿Cuántas cuentas desea abrir?</string>
+    <string name="txtNoMesa">Número de mesa</string>
+    <string name="txtNuevaMesa">Agregar nueva mesa</string>
+    <string name="registro">Registro</string>
+    <string name="correo">Correo</string>
+    <string name="password">Contraseña</string>
+    <string name="verifyPassword">Verificar contraseña</string>
+    <string name="crearCuenta">Crear cuenta</string>
 </resources>

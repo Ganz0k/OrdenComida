@@ -11,7 +11,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Agregar nueva mesa"
+        android:text="@string/txtNuevaMesa"
         android:fontFamily="@font/inter_bold"
         android:textSize="20sp"
         android:layout_gravity="center"
@@ -31,15 +31,15 @@
         android:layout_gravity="center"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="Número de mesa"
+        android:hint="@string/txtNoMesa"
         android:fontFamily="@font/inter_regular"
         android:layout_marginTop="10dp"
-        android:alyout_margiBottom="5dp"/>
+        android:layout_marginBottom="5dp"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="¿Cuántas cuentas desea abrir?"
+        android:text="@string/txtAbrirCuentas"
         android:fontFamily="@font/inter_semibold"
         android:textSize="17sp"
         android:layout_gravity="center"
@@ -60,7 +60,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="1 Cuenta"
+        android:text="@string/txtUnaCuenta"
         android:fontFamily="@font/inter_regular"
         android:textSize="15sp"
         android:layout_gravity="center"
@@ -81,7 +81,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Varias cuentas"
+        android:text="@string/txtVariasCuentas"
         android:fontFamily="@font/inter_regular"
         android:textSize="14sp"
         android:layout_gravity="center"
@@ -96,10 +96,10 @@
         android:layout_height="40dp"
         android:layout_gravity="center"
         android:background="@drawable/round_button"
-        android:text="Regresar"
+        android:text="@string/regresar"
         android:fontFamily="@font/inter_semibold"
         android:textColor="@color/white"
         android:textAllCaps="false"
         android:layout_marginTop="10dp"
-        android:layout_marginBotton="5dp" />
+        android:layout_marginBottom="5dp" />
 </LinearLayout>
