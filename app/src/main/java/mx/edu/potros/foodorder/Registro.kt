@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -32,6 +33,7 @@ class Registro : AppCompatActivity() {
         var etVerifyPassword: EditText = findViewById(R.id.inpud_verify_password)
 
         if (etCorreo.text.isBlank() || etPassword.text.isBlank() || etVerifyPassword.text.isBlank()) {
+            Toast.makeText(this, "Llene los campos antes de registrar un nuevo usuario", Toast.LENGTH_LONG).show()
             return
         }
 
@@ -48,6 +50,7 @@ class Registro : AppCompatActivity() {
         val usuario = User(correo, password)
 
         userRef.push().setValue(usuario)
+        Toast.makeText(this, "Usuario registrado exitosamente", Toast.LENGTH_LONG).show()
 
         var intent = Intent(this, Bienvenido::class.java)
         startActivity(intent)
