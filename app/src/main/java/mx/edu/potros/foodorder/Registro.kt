@@ -7,10 +7,10 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 class Registro : AppCompatActivity() {
 
@@ -47,12 +47,27 @@ class Registro : AppCompatActivity() {
             return
         }
 
-        val usuario = User(correo, password)
+        userRef.orderByChild("correo").equalTo(correo).addListenerForSingleValueEvent(object: ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                for (s in snapshot.children) {
+                    val usuarioExistente = snapshot.getValue(User::class.java)
 
-        userRef.push().setValue(usuario)
-        Toast.makeText(this, "Usuario registrado exitosamente", Toast.LENGTH_LONG).show()
+                    if (usuarioExistente != null) {
+                        Toast.makeText(this@Registro, "Un usuario con ese correo ya existe", Toast.LENGTH_LONG).show()
+                        return
+                    }
+                }
 
-        var intent = Intent(this, Bienvenido::class.java)
-        startActivity(intent)
+                val usuario = User(correo, password)
+
+                userRef.push().setValue(usuario)
+                Toast.makeText(this@Registro, "Usuario registrado exitosamente", Toast.LENGTH_LONG).show()
+
+                var intent = Intent(this@Registro, Bienvenido::class.java)
+                startActivity(intent)
+            }
+
+            override fun onCancelled(error: DatabaseError) {}
+        })
     }
 }
