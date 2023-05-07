@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
         var etPassword: EditText = findViewById(R.id.et_password)
 
         if (etUsuario.text.isBlank() || etPassword.text.isBlank()) {
-            Toast.makeText(this, "Llene los campos antes de iniciar sesión", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "Llene los campos antes de iniciar sesión", Toast.LENGTH_SHORT).show()
             return
         }
 
@@ -59,16 +59,16 @@ class MainActivity : AppCompatActivity() {
                         usuarioExistente = s.getValue(User::class.java)
 
                         if (usuarioExistente != null && usuarioExistente.password == password) {
-                            Toast.makeText(this@MainActivity, "Inicio de sesión exitoso", Toast.LENGTH_LONG).show()
+                            Toast.makeText(this@MainActivity, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show()
                             var intent = Intent(this@MainActivity, Bienvenido::class.java)
                             startActivity(intent)
                             return
                         }
                     }
 
-                    Toast.makeText(this@MainActivity, "Usuario y/o contraseña incorrectos", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@MainActivity, "Usuario y/o contraseña incorrectos", Toast.LENGTH_SHORT).show()
                 } else {
-                    Toast.makeText(this@MainActivity, "Usuario y/o contraseña incorrectos", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@MainActivity, "Usuario y/o contraseña incorrectos", Toast.LENGTH_SHORT).show()
                 }
             }
 

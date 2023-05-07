@@ -9,9 +9,9 @@
     tools:context=".MenuOrdenar">
 
     <TextView
+        android:id="@+id/tv_numeroMesa"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Mesa 3"
         android:fontFamily="@font/inter_bold"
         android:textSize="20sp"
         android:layout_gravity="center"

@@ -9,10 +9,10 @@
     tools:context=".Menu">
 
     <TextView
+        android:id="@+id/tv_nombreMesaCuenta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
-        android:text="Cuenta de Ana/Mesa3"
         android:fontFamily="@font/inter_regular"
         android:textSize="15sp"
         android:layout_marginLeft="25dp"

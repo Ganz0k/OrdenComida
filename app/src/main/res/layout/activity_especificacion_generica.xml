@@ -70,14 +70,14 @@
         android:paddingHorizontal="40dp">
 
         <Button
-            android:id="@+id/btn_especificacion_mas"
+            android:id="@+id/btn_especificacion_menos"
             android:layout_width="40dp"
 
             android:layout_height="40dp"
             android:layout_gravity="center"
             android:background="@drawable/round_button"
             android:fontFamily="@font/inter_semibold"
-            android:text="+"
+            android:text="-"
             android:textSize="11sp"
             android:textColor="@color/white"
             android:layout_marginLeft="60dp"/>
@@ -93,14 +93,14 @@
             android:background="@drawable/round_button"/>
 
         <Button
-            android:id="@+id/btn_especificacion_menos"
+            android:id="@+id/btn_especificacion_mas"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_gravity="center"
             android:layout_marginRight="50dp"
             android:background="@drawable/round_button"
             android:fontFamily="@font/inter_semibold"
-            android:text="-"
+            android:text="+"
             android:textSize="11sp"
             android:textColor="@color/white"/>
     </GridLayout>

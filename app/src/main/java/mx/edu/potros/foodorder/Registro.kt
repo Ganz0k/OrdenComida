@@ -33,7 +33,7 @@ class Registro : AppCompatActivity() {
         var etVerifyPassword: EditText = findViewById(R.id.inpud_verify_password)
 
         if (etCorreo.text.isBlank() || etPassword.text.isBlank() || etVerifyPassword.text.isBlank()) {
-            Toast.makeText(this, "Llene los campos antes de registrar un nuevo usuario", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "Llene los campos antes de registrar un nuevo usuario", Toast.LENGTH_SHORT).show()
             return
         }
 
@@ -50,10 +50,10 @@ class Registro : AppCompatActivity() {
         userRef.orderByChild("correo").equalTo(correo).addListenerForSingleValueEvent(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 for (s in snapshot.children) {
-                    val usuarioExistente = snapshot.getValue(User::class.java)
+                    val usuarioExistente = s.getValue(User::class.java)
 
                     if (usuarioExistente != null) {
-                        Toast.makeText(this@Registro, "Un usuario con ese correo ya existe", Toast.LENGTH_LONG).show()
+                        Toast.makeText(this@Registro, "Un usuario con ese correo ya existe", Toast.LENGTH_SHORT).show()
                         return
                     }
                 }
@@ -61,7 +61,7 @@ class Registro : AppCompatActivity() {
                 val usuario = User(correo, password)
 
                 userRef.push().setValue(usuario)
-                Toast.makeText(this@Registro, "Usuario registrado exitosamente", Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Registro, "Usuario registrado exitosamente", Toast.LENGTH_SHORT).show()
 
                 var intent = Intent(this@Registro, Bienvenido::class.java)
                 startActivity(intent)
