@@ -35,6 +35,7 @@ class SeguirAgregando : AppCompatActivity() {
             intent.putExtra("mesa", numMesa)
             intent.putExtra("cuenta", nombreCuenta)
             startActivity(intent)
+            finish()
         }
 
         btnFinalizar.setOnClickListener {
@@ -50,10 +51,12 @@ class SeguirAgregando : AppCompatActivity() {
 
                     if (mesaExistente != null) {
                         mesaExistente.cuentas?.add(nombreCuenta)
+                        s.ref.setValue(mesaExistente)
 
                         var intent = Intent(this@SeguirAgregando, FinCuenta::class.java)
                         intent.putExtra("mesa", numMesa)
                         startActivity(intent)
+                        finish()
                     }
                 }
             }

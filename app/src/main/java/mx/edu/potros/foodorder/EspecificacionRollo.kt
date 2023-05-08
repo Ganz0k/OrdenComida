@@ -46,6 +46,11 @@ class EspecificacionRollo : AppCompatActivity() {
         }
 
         btnRegresar.setOnClickListener {
+            var intent = Intent(this, Catalogo::class.java)
+            intent.putExtra("tipo", "rollos")
+            intent.putExtra("mesa", numMesa)
+            intent.putExtra("cuenta", nombreCuenta)
+            startActivity(intent)
             finish()
         }
     }
@@ -112,19 +117,19 @@ class EspecificacionRollo : AppCompatActivity() {
         }
 
         if (carne.isChecked) {
-            ingredienteExtra = "Carne"
+            ingredienteExtra = "CarneEx"
         } else if (camaron.isChecked) {
-            ingredienteExtra = "Camarón"
+            ingredienteExtra = "CamarónEx"
         } else if (pollo.isChecked) {
-            ingredienteExtra = "Pollo"
+            ingredienteExtra = "PolloEx"
         } else if (tocino.isChecked) {
-            ingredienteExtra = "Tocino"
+            ingredienteExtra = "TocinoEx"
         } else if (surimi.isChecked) {
-            ingredienteExtra = "Surimi"
+            ingredienteExtra = "SurimiEx"
         } else if (tampico.isChecked) {
-            ingredienteExtra = "Tampico"
+            ingredienteExtra = "TampicoEx"
         } else if (gratinado.isChecked) {
-            ingredienteExtra = "Gratinado"
+            ingredienteExtra = "GratinadoEx"
         }
 
         val extras = arroz + "," + alga + "," + ingredienteExtra
@@ -143,6 +148,7 @@ class EspecificacionRollo : AppCompatActivity() {
                         intent.putExtra("mesa", numMesa)
                         intent.putExtra("cuenta", nombreCuenta)
                         startActivity(intent)
+                        finish()
                     }
                 }
             }

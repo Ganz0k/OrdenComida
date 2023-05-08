@@ -38,7 +38,7 @@ class MenuOrdenar : AppCompatActivity() {
         }
 
         btnRegresar.setOnClickListener {
-            finish()
+            var intent = Intent(this, NuevaMesa::class.java)
         }
     }
 

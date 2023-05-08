@@ -34,6 +34,8 @@ class NuevaMesa : AppCompatActivity() {
         }
 
         btnRegresar.setOnClickListener {
+            var intent = Intent(this, MenuPrincipal::class.java)
+            startActivity(intent)
             finish()
         }
     }
@@ -67,6 +69,7 @@ class NuevaMesa : AppCompatActivity() {
                 var intent = Intent(this@NuevaMesa, MenuOrdenar::class.java)
                 intent.putExtra("mesa", numeroMesa)
                 startActivity(intent)
+                finish()
             }
 
             override fun onCancelled(error: DatabaseError) {}

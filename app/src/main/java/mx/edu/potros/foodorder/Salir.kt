@@ -14,13 +14,15 @@ class Salir : AppCompatActivity() {
         val buttonCancelar: Button = findViewById(R.id.btn_cancelar)
 
         buttonSalir.setOnClickListener{
-            var intent: Intent = Intent(this, MainActivity::class.java)
+            var intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
         buttonCancelar.setOnClickListener{
-            var intent: Intent = Intent(this, MenuPrincipal::class.java)
+            var intent = Intent(this, MenuPrincipal::class.java)
             startActivity(intent)
+            finish()
         }
     }
 }

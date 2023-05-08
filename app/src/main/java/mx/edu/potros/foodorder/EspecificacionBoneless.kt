@@ -39,6 +39,11 @@ class EspecificacionBoneless : AppCompatActivity() {
         }
 
         btnRegresar.setOnClickListener {
+            var intent = Intent(this, Catalogo::class.java)
+            intent.putExtra("tipo", "entradas")
+            intent.putExtra("mesa", numMesa)
+            intent.putExtra("cuenta", nombreCuenta)
+            startActivity(intent)
             finish()
         }
     }
@@ -80,6 +85,7 @@ class EspecificacionBoneless : AppCompatActivity() {
                         intent.putExtra("mesa", numMesa)
                         intent.putExtra("cuenta", nombreCuenta)
                         startActivity(intent)
+                        finish()
                     }
                 }
             }

@@ -17,17 +17,19 @@ class MenuPrincipal : AppCompatActivity() {
         val btnListaOrden: TextView = findViewById(R.id.tvOrden)
 
         btnCerrarSesion.setOnClickListener{
-            var intent: Intent = Intent(this, Salir::class.java)
+            var intent = Intent(this, Salir::class.java)
             startActivity(intent)
+            finish()
         }
 
         btnOrdenar.setOnClickListener{
-            var intent: Intent = Intent(this, NuevaMesa::class.java)
+            var intent = Intent(this, NuevaMesa::class.java)
             startActivity(intent)
+            finish()
         }
 
         btnListaOrden.setOnClickListener{
-            var intent: Intent = Intent(this, MenuPrincipalLista::class.java)
+            var intent = Intent(this, MenuPrincipalLista::class.java)
             startActivity(intent)
         }
     }

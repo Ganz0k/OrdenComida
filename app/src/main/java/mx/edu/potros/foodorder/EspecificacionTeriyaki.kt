@@ -39,6 +39,11 @@ class EspecificacionTeriyaki : AppCompatActivity() {
         }
 
         btnRegresar.setOnClickListener {
+            var intent = Intent(this, Catalogo::class.java)
+            intent.putExtra("tipo", "platillos")
+            intent.putExtra("mesa", numMesa)
+            intent.putExtra("cuenta", nombreCuenta)
+            startActivity(intent)
             finish()
         }
     }
@@ -108,7 +113,7 @@ class EspecificacionTeriyaki : AppCompatActivity() {
 
         for (eC in extraChecked) {
             if (eC.isChecked) {
-                iExtra = eC.text.toString() + "ex"
+                iExtra = eC.text.toString() + "Ex"
                 contadorExtra++
             }
         }
@@ -134,6 +139,7 @@ class EspecificacionTeriyaki : AppCompatActivity() {
                         intent.putExtra("cuenta", nombreCuenta)
                         intent.putExtra("mesa", numMesa)
                         startActivity(intent)
+                        finish()
                     }
                 }
             }

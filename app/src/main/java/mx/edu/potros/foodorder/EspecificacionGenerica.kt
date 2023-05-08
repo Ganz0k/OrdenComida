@@ -21,6 +21,7 @@ class EspecificacionGenerica : AppCompatActivity() {
 
         var numMesa: String? = ""
         var nombreCuenta: String? = ""
+        var tipoPlatillo: String? = ""
         val btnMas: Button = findViewById(R.id.btn_especificacion_mas)
         val btnMenos: Button = findViewById(R.id.btn_especificacion_menos)
         val btnAgregar: Button = findViewById(R.id.btn_especificacion_agregar)
@@ -40,6 +41,7 @@ class EspecificacionGenerica : AppCompatActivity() {
             tvDescripcion.setText(bundle.getString("descripcion"))
             numMesa = bundle.getString("mesa")
             nombreCuenta = bundle.getString("cuenta")
+            tipoPlatillo = bundle.getString("tipo")
         }
 
         btnMas.setOnClickListener {
@@ -80,6 +82,11 @@ class EspecificacionGenerica : AppCompatActivity() {
         }
 
         btnRegresar.setOnClickListener {
+            var intent = Intent(this, Catalogo::class.java)
+            intent.putExtra("tipo", tipoPlatillo)
+            intent.putExtra("mesa", numMesa)
+            intent.putExtra("cuenta", nombreCuenta)
+            startActivity(intent)
             finish()
         }
     }
@@ -100,6 +107,7 @@ class EspecificacionGenerica : AppCompatActivity() {
                         intent.putExtra("cuenta", nombreCuenta)
                         intent.putExtra("mesa", numMesa)
                         startActivity(intent)
+                        finish()
                     }
                 }
             }

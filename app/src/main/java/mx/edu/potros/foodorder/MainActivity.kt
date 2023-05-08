@@ -62,6 +62,7 @@ class MainActivity : AppCompatActivity() {
                             Toast.makeText(this@MainActivity, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show()
                             var intent = Intent(this@MainActivity, Bienvenido::class.java)
                             startActivity(intent)
+                            finish()
                             return
                         }
                     }

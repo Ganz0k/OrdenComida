@@ -15,6 +15,7 @@ class Bienvenido : AppCompatActivity() {
         image.setOnClickListener {
             var intent = Intent(this, MenuPrincipal::class.java)
             startActivity(intent)
+            finish()
         }
     }
 }

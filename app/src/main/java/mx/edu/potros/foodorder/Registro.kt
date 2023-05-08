@@ -65,6 +65,7 @@ class Registro : AppCompatActivity() {
 
                 var intent = Intent(this@Registro, Bienvenido::class.java)
                 startActivity(intent)
+                finish()
             }
 
             override fun onCancelled(error: DatabaseError) {}

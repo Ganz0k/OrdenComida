@@ -39,6 +39,11 @@ class EspecificacionChickeMongolia : AppCompatActivity() {
         }
 
         btnRegresar.setOnClickListener {
+            var intent = Intent(this, Catalogo::class.java)
+            intent.putExtra("tipo", "platillos")
+            intent.putExtra("mesa", numMesa)
+            intent.putExtra("cuenta", nombreCuenta)
+            startActivity(intent)
             finish()
         }
     }
@@ -98,6 +103,7 @@ class EspecificacionChickeMongolia : AppCompatActivity() {
                         intent.putExtra("cuenta", nombreCuenta)
                         intent.putExtra("mesa", numMesa)
                         startActivity(intent)
+                        finish()
                     }
                 }
             }

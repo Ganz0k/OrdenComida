@@ -36,6 +36,7 @@ class Menu : AppCompatActivity() {
             intent.putExtra("cuenta", nombreCuenta)
             intent.putExtra("mesa", numMesa)
             startActivity(intent)
+            finish()
         }
 
         ivRollos.setOnClickListener {
@@ -44,6 +45,7 @@ class Menu : AppCompatActivity() {
             intent.putExtra("cuenta", nombreCuenta)
             intent.putExtra("mesa", numMesa)
             startActivity(intent)
+            finish()
         }
 
         ivPlatillos.setOnClickListener {
@@ -52,6 +54,7 @@ class Menu : AppCompatActivity() {
             intent.putExtra("cuenta", nombreCuenta)
             intent.putExtra("mesa", numMesa)
             startActivity(intent)
+            finish()
         }
 
         ivExtras.setOnClickListener {
@@ -60,6 +63,7 @@ class Menu : AppCompatActivity() {
             intent.putExtra("cuenta", nombreCuenta)
             intent.putExtra("mesa", numMesa)
             startActivity(intent)
+            finish()
         }
 
         ivPostres.setOnClickListener {
@@ -68,6 +72,7 @@ class Menu : AppCompatActivity() {
             intent.putExtra("cuenta", nombreCuenta)
             intent.putExtra("mesa", numMesa)
             startActivity(intent)
+            finish()
         }
 
         ivBebidas.setOnClickListener {
@@ -76,6 +81,7 @@ class Menu : AppCompatActivity() {
             intent.putExtra("cuenta", nombreCuenta)
             intent.putExtra("mesa", numMesa)
             startActivity(intent)
+            finish()
         }
     }
 }
