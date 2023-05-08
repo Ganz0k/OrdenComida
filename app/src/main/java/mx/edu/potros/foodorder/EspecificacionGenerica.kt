@@ -6,7 +6,10 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 class EspecificacionGenerica : AppCompatActivity() {
 
@@ -16,6 +19,8 @@ class EspecificacionGenerica : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_especificacion_generica)
 
+        var numMesa: String? = ""
+        var nombreCuenta: String? = ""
         val btnMas: Button = findViewById(R.id.btn_especificacion_mas)
         val btnMenos: Button = findViewById(R.id.btn_especificacion_menos)
         val btnAgregar: Button = findViewById(R.id.btn_especificacion_agregar)
@@ -33,6 +38,8 @@ class EspecificacionGenerica : AppCompatActivity() {
             tvNombre.setText(bundle.getString("nombre"))
             tvPrecio.setText("$${bundle.getDouble("precio")}")
             tvDescripcion.setText(bundle.getString("descripcion"))
+            numMesa = bundle.getString("mesa")
+            nombreCuenta = bundle.getString("cuenta")
         }
 
         btnMas.setOnClickListener {
@@ -62,8 +69,14 @@ class EspecificacionGenerica : AppCompatActivity() {
         }
 
         btnAgregar.setOnClickListener {
-            var intent = Intent(this, SeguirAgregando::class.java)
-            startActivity(intent)
+            var txtCantidad = tvCantidad.text.toString()
+
+            try {
+                var cantidad = Integer.parseInt(txtCantidad)
+                agregarPlatillo(cantidad, tvNombre.text.toString(), nombreCuenta, numMesa)
+            } catch (e: java.lang.Exception) {
+                System.err.println("Could not parse " + e)
+            }
         }
 
         btnRegresar.setOnClickListener {
@@ -71,7 +84,27 @@ class EspecificacionGenerica : AppCompatActivity() {
         }
     }
 
-    private fun agregarPlatillo(cantidad: Int, nombreCuenta: String?, numMesa: String?) {
+    private fun agregarPlatillo(cantidad: Int, nombrePlatillo: String?, nombreCuenta: String?, numMesa: String?) {
+        val platillo = PlatilloCuenta(cantidad, null, nombrePlatillo)
 
+        cuentaRef.orderByChild("nombre").equalTo(nombreCuenta).addListenerForSingleValueEvent(object: ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                for (s in snapshot.children) {
+                    var cuentaExistente = s.getValue(CuentaBD::class.java)
+
+                    if (cuentaExistente != null) {
+                        cuentaExistente.platillos?.add(platillo)
+                        s.ref.setValue(cuentaExistente)
+
+                        var intent = Intent(this@EspecificacionGenerica, SeguirAgregando::class.java)
+                        intent.putExtra("cuenta", nombreCuenta)
+                        intent.putExtra("mesa", numMesa)
+                        startActivity(intent)
+                    }
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {}
+        })
     }
 }
