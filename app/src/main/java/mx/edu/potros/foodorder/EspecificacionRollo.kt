@@ -4,14 +4,25 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 class EspecificacionRollo : AppCompatActivity() {
+
+    private val cuentaRef = FirebaseDatabase.getInstance().getReference("Cuentas")
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_especificacion_rollo)
 
+        var nombreCuenta: String? = ""
+        var numMesa: String? = ""
         val btnAgregar: Button = findViewById(R.id.btn_especificacion_agregar)
         val btnRegresar: Button = findViewById(R.id.btn_especificacion_regresar)
         val tvDescripcion: TextView = findViewById(R.id.tv_especificacionDescripcion)
@@ -26,15 +37,117 @@ class EspecificacionRollo : AppCompatActivity() {
             tvNombre.setText(bundle.getString("nombre"))
             tvPrecio.setText("$${bundle.getDouble("precio")}")
             tvDescripcion.setText(bundle.getString("descripcion"))
+            nombreCuenta = bundle.getString("cuenta")
+            numMesa = bundle.getString("mesa")
         }
 
         btnAgregar.setOnClickListener {
-            var intent = Intent(this, SeguirAgregando::class.java)
-            startActivity(intent)
+            agregarRollo(tvNombre.text.toString(), nombreCuenta, numMesa)
         }
 
         btnRegresar.setOnClickListener {
             finish()
         }
+    }
+
+    private fun agregarRollo(nombrePlatillo: String?, nombreCuenta: String?, numMesa: String?) {
+        val empanizado: CheckBox = findViewById(R.id.checkBox)
+        val natural: CheckBox = findViewById(R.id.checkBox2)
+        val mitad: CheckBox = findViewById(R.id.checkBox3)
+        val conAlga: CheckBox = findViewById(R.id.checkBox4)
+        val sinAlga: CheckBox = findViewById(R.id.checkBox5)
+        val carne: CheckBox = findViewById(R.id.checkBox111)
+        val camaron: CheckBox = findViewById(R.id.checkBox122)
+        val pollo: CheckBox = findViewById(R.id.checkBox6)
+        val tocino: CheckBox = findViewById(R.id.checkBox7)
+        val surimi: CheckBox = findViewById(R.id.checkBox8)
+        val tampico: CheckBox = findViewById(R.id.checkBox9)
+        val gratinado: CheckBox = findViewById(R.id.checkBox10)
+
+        val arrozChecked = listOf(empanizado, natural, mitad)
+        val algaChecked = listOf(conAlga, sinAlga)
+        val ingredienteExtraChecked = listOf(carne, camaron, pollo, tocino, surimi, tampico, gratinado)
+
+        var contadorArroz = 0
+        var contadorAlga = 0
+        var contadorIngrediente = 0
+
+        var arroz = ""
+        var alga = ""
+        var ingredienteExtra = ""
+
+        for (aC in arrozChecked) {
+            if (aC.isChecked) {
+                arroz = aC.text.toString()
+                contadorArroz++
+            }
+        }
+
+        if (contadorArroz < 1 || contadorArroz > 1) {
+            Toast.makeText(this, "Seleccione un tipo de arroz", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        for (aC in algaChecked) {
+            if (aC.isChecked) {
+                alga = aC.text.toString()
+                contadorAlga++
+            }
+        }
+
+        if (contadorAlga < 1 || contadorAlga > 1) {
+            Toast.makeText(this, "Seleccione como quiere su alga", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        for (iC in ingredienteExtraChecked) {
+            if (iC.isChecked) {
+                contadorIngrediente++
+            }
+        }
+
+        if (contadorIngrediente > 1) {
+            Toast.makeText(this, "Solo seleccione un ingrediente extra", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        if (carne.isChecked) {
+            ingredienteExtra = "Carne"
+        } else if (camaron.isChecked) {
+            ingredienteExtra = "Camarón"
+        } else if (pollo.isChecked) {
+            ingredienteExtra = "Pollo"
+        } else if (tocino.isChecked) {
+            ingredienteExtra = "Tocino"
+        } else if (surimi.isChecked) {
+            ingredienteExtra = "Surimi"
+        } else if (tampico.isChecked) {
+            ingredienteExtra = "Tampico"
+        } else if (gratinado.isChecked) {
+            ingredienteExtra = "Gratinado"
+        }
+
+        val extras = arroz + "," + alga + "," + ingredienteExtra
+        val platillo = PlatilloCuenta(1, extras, nombrePlatillo)
+
+        cuentaRef.orderByChild("nombre").equalTo(nombreCuenta).addListenerForSingleValueEvent(object: ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                for (s in snapshot.children) {
+                    var cuentaExistente = s.getValue(CuentaBD::class.java)
+
+                    if (cuentaExistente != null) {
+                        cuentaExistente.platillos?.add(platillo)
+                        s.ref.setValue(cuentaExistente)
+
+                        var intent = Intent(this@EspecificacionRollo, SeguirAgregando::class.java)
+                        intent.putExtra("mesa", numMesa)
+                        intent.putExtra("cuenta", nombreCuenta)
+                        startActivity(intent)
+                    }
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {}
+        })
     }
 }

@@ -120,7 +120,7 @@
         android:id="@+id/checkBox5"
         android:layout_width="match_parent"
         android:layout_height="23dp"
-        android:text="sin alga"
+        android:text="Sin alga"
         android:textColor="@color/white" />
 
     <View
@@ -144,49 +144,49 @@
         android:id="@+id/checkBox111"
         android:layout_width="match_parent"
         android:layout_height="23dp"
-        android:text="Carne"
+        android:text="Carne + $20.00"
         android:textColor="@color/white" />
 
     <CheckBox
         android:id="@+id/checkBox122"
         android:layout_width="match_parent"
         android:layout_height="23dp"
-        android:text="Camarón"
+        android:text="Camarón + $20.00"
         android:textColor="@color/white" />
 
     <CheckBox
         android:id="@+id/checkBox6"
         android:layout_width="match_parent"
         android:layout_height="23dp"
-        android:text="Pollo"
+        android:text="Pollo + $20.00"
         android:textColor="@color/white" />
 
     <CheckBox
         android:id="@+id/checkBox7"
         android:layout_width="match_parent"
         android:layout_height="23dp"
-        android:text="Tocino"
+        android:text="Tocino + $20.00"
         android:textColor="@color/white" />
 
     <CheckBox
         android:id="@+id/checkBox8"
         android:layout_width="match_parent"
         android:layout_height="23dp"
-        android:text="Surimi"
+        android:text="Surimi + $20.00"
         android:textColor="@color/white" />
 
     <CheckBox
         android:id="@+id/checkBox9"
         android:layout_width="match_parent"
         android:layout_height="23dp"
-        android:text="Tampico"
+        android:text="Tampico + $20.00"
         android:textColor="@color/white" />
 
     <CheckBox
         android:id="@+id/checkBox10"
         android:layout_width="match_parent"
         android:layout_height="23dp"
-        android:text="Gratinado"
+        android:text="Gratinado + $20.00"
         android:textColor="@color/white" />
 
     <Button

@@ -18,12 +18,15 @@ class Catalogo : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_catalogo)
 
+        var numMesa: String? = intent.getStringExtra("mesa")
+        var nombreCuenta: String? = intent.getStringExtra("cuenta")
+
         var menuOption: String? = intent.getStringExtra("tipo")
         cargarPlatillo(menuOption)
 
         var tvMenuOption: TextView = findViewById(R.id.tv_menu_option)
         val gridview: GridView = findViewById(R.id.gridView)
-        adapter = PlatilloAdapter(platillos, this, tvMenuOption)
+        adapter = PlatilloAdapter(platillos, this, tvMenuOption, numMesa, nombreCuenta)
         gridview.adapter = adapter
 
         var button: Button = findViewById(R.id.btn_catalagoPlatillo_regresar)
@@ -98,14 +101,19 @@ class Catalogo : AppCompatActivity() {
     }
 
     class PlatilloAdapter: BaseAdapter {
+
         var platillos = ArrayList<Platillo>()
         var context: Context? = null
         var option: TextView
+        var numMesa: String? = null
+        var nombreCuenta: String? = null
 
-        constructor(platillos: ArrayList<Platillo>, context: Context?, option: TextView): super() {
+        constructor(platillos: ArrayList<Platillo>, context: Context?, option: TextView, numMesa: String?, nombreCuenta: String?): super() {
             this.platillos = platillos
             this.context = context
             this.option = option
+            this.numMesa = numMesa
+            this.nombreCuenta = nombreCuenta
         }
 
         override fun getCount(): Int {
@@ -139,6 +147,8 @@ class Catalogo : AppCompatActivity() {
                 vista.setOnClickListener {
                     var intent = Intent(context, EspecificacionBoneless::class.java)
                     intent.putExtra("descripcion", platillo.descripcion)
+                    intent.putExtra("mesa", numMesa)
+                    intent.putExtra("cuenta", nombreCuenta)
                     context!!.startActivity(intent)
                 }
             } else if (option.text.equals("Rollos")) {
@@ -148,18 +158,24 @@ class Catalogo : AppCompatActivity() {
                     intent.putExtra("decripcion", platillo.descripcion)
                     intent.putExtra("imagen", platillo.image)
                     intent.putExtra("precio", platillo.precio)
+                    intent.putExtra("mesa", numMesa)
+                    intent.putExtra("cuenta", nombreCuenta)
                     context!!.startActivity(intent)
                 }
-            } else if(platillo.image == R.drawable.chickenmongolia) {
+            } else if (platillo.image == R.drawable.chickenmongolia) {
                 vista.setOnClickListener {
                     var intent = Intent(context, EspecificacionChickeMongolia::class.java)
                     intent.putExtra("descripcion", platillo.descripcion)
+                    intent.putExtra("mesa", numMesa)
+                    intent.putExtra("cuenta", nombreCuenta)
                     context!!.startActivity(intent)
                 }
             } else if (platillo.image == R.drawable.teriyaki) {
                 vista.setOnClickListener {
                     var intent = Intent(context, EspecificacionTeriyaki::class.java)
                     intent.putExtra("descripcion", platillo.descripcion)
+                    intent.putExtra("mesa", numMesa)
+                    intent.putExtra("cuenta", nombreCuenta)
                     context!!.startActivity(intent)
                 }
             } else {
@@ -169,6 +185,8 @@ class Catalogo : AppCompatActivity() {
                     intent.putExtra("decripcion", platillo.descripcion)
                     intent.putExtra("imagen", platillo.image)
                     intent.putExtra("precio", platillo.precio)
+                    intent.putExtra("mesa", numMesa)
+                    intent.putExtra("cuenta", nombreCuenta)
                     context!!.startActivity(intent)
                 }
             }

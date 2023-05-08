@@ -4,13 +4,24 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.CheckBox
 import android.widget.TextView
+import android.widget.Toast
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 class EspecificacionTeriyaki : AppCompatActivity() {
+
+    private val cuentaRef = FirebaseDatabase.getInstance().getReference("Cuentas")
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_especificacion_teriyaki)
 
+        var numMesa: String? = ""
+        var nombreCuenta: String? = ""
         val btnAgregar: Button = findViewById(R.id.btn_especificacion_agregar)
         val btnRegresar: Button = findViewById(R.id.btn_especificacion_regresar)
         var tvDescripcion: TextView = findViewById(R.id.tv_especificacionDescripcion)
@@ -19,15 +30,115 @@ class EspecificacionTeriyaki : AppCompatActivity() {
 
         if (bundle != null) {
             tvDescripcion.setText(bundle.getString("descripcion"))
+            numMesa = bundle.getString("mesa")
+            nombreCuenta = bundle.getString("cuenta")
         }
 
         btnAgregar.setOnClickListener {
-            var intent = Intent(this, SeguirAgregando::class.java)
-            startActivity(intent)
+            agregarTeriyaki(nombreCuenta, numMesa)
         }
 
         btnRegresar.setOnClickListener {
             finish()
         }
+    }
+
+    private fun agregarTeriyaki(nombreCuenta: String?, numMesa: String?) {
+        val arrozBlanco: CheckBox = findViewById(R.id.checkBox)
+        val arrozFrito: CheckBox = findViewById(R.id.checkBox2)
+        val verdurasVapor: CheckBox = findViewById(R.id.checkBox3)
+        val verdurasSalteadas: CheckBox = findViewById(R.id.checkBox4)
+        val camaron: CheckBox = findViewById(R.id.checkBox5)
+        val pollo: CheckBox = findViewById(R.id.checkBox6)
+        val carne: CheckBox = findViewById(R.id.checkBox7)
+        val camaronEx: CheckBox = findViewById(R.id.checkBox8)
+        val polloEx: CheckBox = findViewById(R.id.checkBox9)
+        val carneEx: CheckBox = findViewById(R.id.checkBox10)
+
+        val arrozChecked = listOf(arrozBlanco, arrozFrito)
+        val verdurasChecked = listOf(verdurasVapor, verdurasSalteadas)
+        val ingredienteChecked = listOf(camaron, pollo, carne)
+        val extraChecked = listOf(camaronEx, polloEx, carneEx)
+
+        var contadorArroz = 0
+        var contadorVerduras = 0
+        var contadorIngrediente = 0
+        var contadorExtra = 0
+
+        var arroz = ""
+        var verduras = ""
+        var ingrediente = ""
+        var iExtra = ""
+
+        for (aC in arrozChecked) {
+            if (aC.isChecked) {
+                arroz = aC.text.toString()
+                contadorArroz++
+            }
+        }
+
+        if (contadorArroz < 1 || contadorArroz > 1) {
+            Toast.makeText(this, "Seleccione un tipo de arroz", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        for (vC in verdurasChecked) {
+            if (vC.isChecked) {
+                verduras = vC.text.toString()
+                contadorVerduras++
+            }
+        }
+
+        if (contadorVerduras < 1 || contadorVerduras > 1) {
+            Toast.makeText(this, "Seleccione un tipo de verduras", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        for (iC in ingredienteChecked) {
+            if (iC.isChecked) {
+                ingrediente = iC.text.toString()
+                contadorIngrediente++
+            }
+        }
+
+        if (contadorIngrediente < 1 || contadorIngrediente > 1) {
+            Toast.makeText(this, "Seleccione un ingrediente", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        for (eC in extraChecked) {
+            if (eC.isChecked) {
+                iExtra = eC.text.toString() + "ex"
+                contadorExtra++
+            }
+        }
+
+        if (contadorExtra > 1) {
+            Toast.makeText(this, "Solo seleccione un ingrediente extra", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        var extras = arroz + "," + verduras + "," + ingrediente + "," + iExtra
+        val platillo = PlatilloCuenta(1, extras, "Teriyaki")
+
+        cuentaRef.orderByChild("nombre").equalTo(nombreCuenta).addListenerForSingleValueEvent(object: ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                for (s in snapshot.children) {
+                    var cuentaExistente = s.getValue(CuentaBD::class.java)
+
+                    if (cuentaExistente != null) {
+                        cuentaExistente.platillos?.add(platillo)
+                        s.ref.setValue(cuentaExistente)
+
+                        var intent = Intent(this@EspecificacionTeriyaki, SeguirAgregando::class.java)
+                        intent.putExtra("cuenta", nombreCuenta)
+                        intent.putExtra("mesa", numMesa)
+                        startActivity(intent)
+                    }
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {}
+        })
     }
 }

@@ -6,8 +6,12 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import com.google.firebase.database.FirebaseDatabase
 
 class EspecificacionGenerica : AppCompatActivity() {
+
+    private val cuentaRef = FirebaseDatabase.getInstance().getReference("Cuentas")
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_especificacion_generica)
@@ -48,8 +52,10 @@ class EspecificacionGenerica : AppCompatActivity() {
 
             try {
                 var cantidad = Integer.parseInt(txtCantidad)
-                cantidad--
-                tvCantidad.setText(cantidad.toString())
+                if (cantidad != 1) {
+                    cantidad--
+                    tvCantidad.setText(cantidad.toString())
+                }
             } catch (e: java.lang.Exception) {
                 System.out.println("Could not parse " + e)
             }
@@ -63,5 +69,9 @@ class EspecificacionGenerica : AppCompatActivity() {
         btnRegresar.setOnClickListener {
             finish()
         }
+    }
+
+    private fun agregarPlatillo(cantidad: Int, nombreCuenta: String?, numMesa: String?) {
+
     }
 }
