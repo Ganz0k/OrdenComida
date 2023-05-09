@@ -14,7 +14,7 @@ import com.google.firebase.database.ValueEventListener
 
 class EspecificacionBoneless : AppCompatActivity() {
 
-    private val cuentaRef = FirebaseDatabase.getInstance().getReference("Cuentas")
+    private val mesaRef = FirebaseDatabase.getInstance().getReference("Mesas")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -75,14 +75,20 @@ class EspecificacionBoneless : AppCompatActivity() {
 
         val platillo = PlatilloCuenta(1, salsaSeleccionada, "Boneless")
 
-        cuentaRef.orderByChild("nombre").equalTo(nombreCuenta).addListenerForSingleValueEvent(object: ValueEventListener {
+        mesaRef.orderByChild("nombre").equalTo(numMesa).addListenerForSingleValueEvent(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 for (s in snapshot.children) {
-                    var cuentaExistente = s.getValue(CuentaBD::class.java)
+                    var mesaExistente = s.getValue(Mesa::class.java)
 
-                    if (cuentaExistente != null) {
-                        cuentaExistente.platillos?.add(platillo)
-                        s.ref.setValue(cuentaExistente)
+                    if (mesaExistente != null) {
+                        for (c in mesaExistente.cuentas!!) {
+                            if (c.nombre == nombreCuenta) {
+                                c.platillos?.add(platillo)
+                                break
+                            }
+                        }
+
+                        s.ref.setValue(mesaExistente)
 
                         var intent = Intent(this@EspecificacionBoneless, SeguirAgregando::class.java)
                         intent.putExtra("mesa", numMesa)

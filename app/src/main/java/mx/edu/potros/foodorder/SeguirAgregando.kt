@@ -12,7 +12,6 @@ import com.google.firebase.database.ktx.getValue
 
 class SeguirAgregando : AppCompatActivity() {
 
-    private val mesaRef = FirebaseDatabase.getInstance().getReference("Mesas")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,30 +41,15 @@ class SeguirAgregando : AppCompatActivity() {
         }
 
         btnFinalizar.setOnClickListener {
-            finalizarCuenta(numMesa, nombreCuenta, numCuentas)
+            finalizarCuenta(numMesa, numCuentas)
         }
     }
 
-    private fun finalizarCuenta(numMesa: String?, nombreCuenta: String?, numCuentas: String?) {
-        mesaRef.orderByChild("nombre").equalTo(numMesa).addListenerForSingleValueEvent(object: ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                for (s in snapshot.children) {
-                    val mesaExistente = s.getValue(Mesa::class.java)
-
-                    if (mesaExistente != null) {
-                        mesaExistente.cuentas?.add(nombreCuenta)
-                        s.ref.setValue(mesaExistente)
-
-                        var intent = Intent(this@SeguirAgregando, FinCuenta::class.java)
-                        intent.putExtra("mesa", numMesa)
-                        intent.putExtra("numCuentas", numCuentas)
-                        startActivity(intent)
-                        finish()
-                    }
-                }
-            }
-
-            override fun onCancelled(error: DatabaseError) {}
-        })
+    private fun finalizarCuenta(numMesa: String?, numCuentas: String?) {
+        var intent = Intent(this@SeguirAgregando, FinCuenta::class.java)
+        intent.putExtra("mesa", numMesa)
+        intent.putExtra("numCuentas", numCuentas)
+        startActivity(intent)
+        finish()
     }
 }

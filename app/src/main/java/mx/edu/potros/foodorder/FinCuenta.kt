@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.Toast
 
 class FinCuenta : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,6 +30,8 @@ class FinCuenta : AppCompatActivity() {
                 intent.putExtra("numCuentas", numCuentas)
                 startActivity(intent)
                 finish()
+            } else {
+                Toast.makeText(this, "Esta mesa es de solo una cuenta", Toast.LENGTH_SHORT).show()
             }
         }
 

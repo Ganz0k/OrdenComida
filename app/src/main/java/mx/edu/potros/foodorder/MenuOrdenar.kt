@@ -15,7 +15,7 @@ import com.google.firebase.database.ktx.getValue
 
 class MenuOrdenar : AppCompatActivity() {
 
-    private val cuentaRef = FirebaseDatabase.getInstance().getReference("Cuentas")
+    private val mesaRef = FirebaseDatabase.getInstance().getReference("Mesas")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,8 +41,6 @@ class MenuOrdenar : AppCompatActivity() {
 
         btnRegresar.setOnClickListener {
             var intent = Intent(this, NuevaMesa::class.java)
-            //intent.putExtra("mesa", numeroMesa)
-            //intent.putExtra("numCuentas", numCuentas)
             startActivity(intent)
             finish()
         }
@@ -58,27 +56,31 @@ class MenuOrdenar : AppCompatActivity() {
 
         var nombreCuenta: String = etNombreCuenta.text.toString().trim()
 
-        cuentaRef.orderByChild("nombre").equalTo(nombreCuenta).addListenerForSingleValueEvent(object: ValueEventListener {
+        mesaRef.orderByChild("nombre").equalTo(mesa).addListenerForSingleValueEvent(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 for (s in snapshot.children) {
-                    val cuentaExistente = s.getValue(CuentaBD::class.java)
+                    val mesaExistente = s.getValue(Mesa::class.java)
 
-                    if (cuentaExistente != null) {
-                        Toast.makeText(this@MenuOrdenar, "Una cuenta con ese nombre ya existe", Toast.LENGTH_SHORT).show()
-                        return
+                    if (mesaExistente != null) {
+                        for (c in mesaExistente.cuentas!!) {
+                            if (c.nombre == nombreCuenta) {
+                                Toast.makeText(this@MenuOrdenar, "Una cuenta con ese nombre ya existe", Toast.LENGTH_SHORT).show()
+                                return
+                            }
+                        }
+
+                        val cuenta = CuentaBD(nombreCuenta)
+                        mesaExistente.cuentas?.add(cuenta)
+                        s.ref.setValue(mesaExistente)
+                        Toast.makeText(this@MenuOrdenar, "Cuenta agregada exitosamente", Toast.LENGTH_SHORT).show()
+
+                        var intent = Intent(this@MenuOrdenar, Menu::class.java)
+                        intent.putExtra("mesa", mesa)
+                        intent.putExtra("numCuentas", numCuentas)
+                        intent.putExtra("cuenta", nombreCuenta)
+                        startActivity(intent)
                     }
                 }
-
-                val cuenta = CuentaBD(nombreCuenta)
-
-                cuentaRef.push().setValue(cuenta)
-                Toast.makeText(this@MenuOrdenar, "Cuenta agregada exitosamente", Toast.LENGTH_SHORT).show()
-
-                var intent = Intent(this@MenuOrdenar, Menu::class.java)
-                intent.putExtra("mesa", mesa)
-                intent.putExtra("numCuentas", numCuentas)
-                intent.putExtra("cuenta", nombreCuenta)
-                startActivity(intent)
             }
 
             override fun onCancelled(error: DatabaseError) {}

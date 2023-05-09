@@ -15,7 +15,7 @@ import com.google.firebase.database.ValueEventListener
 
 class EspecificacionRollo : AppCompatActivity() {
 
-    private val cuentaRef = FirebaseDatabase.getInstance().getReference("Cuentas")
+    private val mesaRef = FirebaseDatabase.getInstance().getReference("Mesas")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -98,7 +98,7 @@ class EspecificacionRollo : AppCompatActivity() {
 
         for (aC in algaChecked) {
             if (aC.isChecked) {
-                alga = aC.text.toString()
+                alga = "," + aC.text.toString()
                 contadorAlga++
             }
         }
@@ -120,32 +120,38 @@ class EspecificacionRollo : AppCompatActivity() {
         }
 
         if (carne.isChecked) {
-            ingredienteExtra = "CarneEx"
+            ingredienteExtra = ",CarneEx"
         } else if (camaron.isChecked) {
-            ingredienteExtra = "CamarónEx"
+            ingredienteExtra = ",CamarónEx"
         } else if (pollo.isChecked) {
-            ingredienteExtra = "PolloEx"
+            ingredienteExtra = ",PolloEx"
         } else if (tocino.isChecked) {
-            ingredienteExtra = "TocinoEx"
+            ingredienteExtra = ",TocinoEx"
         } else if (surimi.isChecked) {
-            ingredienteExtra = "SurimiEx"
+            ingredienteExtra = ",SurimiEx"
         } else if (tampico.isChecked) {
-            ingredienteExtra = "TampicoEx"
+            ingredienteExtra = ",TampicoEx"
         } else if (gratinado.isChecked) {
-            ingredienteExtra = "GratinadoEx"
+            ingredienteExtra = ",GratinadoEx"
         }
 
-        val extras = arroz + "," + alga + "," + ingredienteExtra
+        val extras = arroz + alga + ingredienteExtra
         val platillo = PlatilloCuenta(1, extras, nombrePlatillo)
 
-        cuentaRef.orderByChild("nombre").equalTo(nombreCuenta).addListenerForSingleValueEvent(object: ValueEventListener {
+        mesaRef.orderByChild("nombre").equalTo(numMesa).addListenerForSingleValueEvent(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 for (s in snapshot.children) {
-                    var cuentaExistente = s.getValue(CuentaBD::class.java)
+                    var mesaExistente = s.getValue(Mesa::class.java)
 
-                    if (cuentaExistente != null) {
-                        cuentaExistente.platillos?.add(platillo)
-                        s.ref.setValue(cuentaExistente)
+                    if (mesaExistente != null) {
+                        for (c in mesaExistente.cuentas!!) {
+                            if (c.nombre == nombreCuenta) {
+                                c.platillos?.add(platillo)
+                                break
+                            }
+                        }
+
+                        s.ref.setValue(mesaExistente)
 
                         var intent = Intent(this@EspecificacionRollo, SeguirAgregando::class.java)
                         intent.putExtra("mesa", numMesa)

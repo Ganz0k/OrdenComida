@@ -14,7 +14,7 @@ import com.google.firebase.database.ValueEventListener
 
 class EspecificacionTeriyaki : AppCompatActivity() {
 
-    private val cuentaRef = FirebaseDatabase.getInstance().getReference("Cuentas")
+    private val mesaRef = FirebaseDatabase.getInstance().getReference("Mesas")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -92,7 +92,7 @@ class EspecificacionTeriyaki : AppCompatActivity() {
 
         for (vC in verdurasChecked) {
             if (vC.isChecked) {
-                verduras = vC.text.toString()
+                verduras = "," + vC.text.toString()
                 contadorVerduras++
             }
         }
@@ -104,7 +104,7 @@ class EspecificacionTeriyaki : AppCompatActivity() {
 
         for (iC in ingredienteChecked) {
             if (iC.isChecked) {
-                ingrediente = iC.text.toString()
+                ingrediente = "," +  iC.text.toString()
                 contadorIngrediente++
             }
         }
@@ -116,7 +116,7 @@ class EspecificacionTeriyaki : AppCompatActivity() {
 
         for (eC in extraChecked) {
             if (eC.isChecked) {
-                iExtra = eC.text.toString() + "Ex"
+                iExtra = "," + eC.text.toString() + "Ex"
                 contadorExtra++
             }
         }
@@ -126,17 +126,23 @@ class EspecificacionTeriyaki : AppCompatActivity() {
             return
         }
 
-        var extras = arroz + "," + verduras + "," + ingrediente + "," + iExtra
+        var extras = arroz + verduras + ingrediente + iExtra
         val platillo = PlatilloCuenta(1, extras, "Teriyaki")
 
-        cuentaRef.orderByChild("nombre").equalTo(nombreCuenta).addListenerForSingleValueEvent(object: ValueEventListener {
+        mesaRef.orderByChild("nombre").equalTo(numMesa).addListenerForSingleValueEvent(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 for (s in snapshot.children) {
-                    var cuentaExistente = s.getValue(CuentaBD::class.java)
+                    var mesaExistente = s.getValue(Mesa::class.java)
 
-                    if (cuentaExistente != null) {
-                        cuentaExistente.platillos?.add(platillo)
-                        s.ref.setValue(cuentaExistente)
+                    if (mesaExistente != null) {
+                        for (c in mesaExistente.cuentas!!) {
+                            if (c.nombre == nombreCuenta) {
+                                c.platillos?.add(platillo)
+                                break
+                            }
+                        }
+
+                        s.ref.setValue(mesaExistente)
 
                         var intent = Intent(this@EspecificacionTeriyaki, SeguirAgregando::class.java)
                         intent.putExtra("cuenta", nombreCuenta)
