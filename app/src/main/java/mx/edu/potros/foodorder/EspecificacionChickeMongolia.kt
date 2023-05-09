@@ -22,6 +22,7 @@ class EspecificacionChickeMongolia : AppCompatActivity() {
 
         var numMesa: String? = ""
         var nombreCuenta: String? = ""
+        var numCuentas: String? = ""
         val btnAgregar: Button = findViewById(R.id.btn_especificacion_agregar)
         val btnRegresar: Button = findViewById(R.id.btn_especificacion_regresar)
         var tvDescripcion: TextView = findViewById(R.id.tv_especificacionDescripcion)
@@ -32,10 +33,11 @@ class EspecificacionChickeMongolia : AppCompatActivity() {
             tvDescripcion.setText(bundle.getString("descripcion"))
             numMesa = bundle.getString("mesa")
             nombreCuenta = bundle.getString("cuenta")
+            numCuentas = bundle.getString("numCuentas")
         }
 
         btnAgregar.setOnClickListener {
-            agregarChickenMongolia(nombreCuenta, numMesa)
+            agregarChickenMongolia(nombreCuenta, numMesa, numCuentas)
         }
 
         btnRegresar.setOnClickListener {
@@ -43,12 +45,13 @@ class EspecificacionChickeMongolia : AppCompatActivity() {
             intent.putExtra("tipo", "platillos")
             intent.putExtra("mesa", numMesa)
             intent.putExtra("cuenta", nombreCuenta)
+            intent.putExtra("numCuentas", numCuentas)
             startActivity(intent)
             finish()
         }
     }
 
-    private fun agregarChickenMongolia(nombreCuenta: String?, numMesa: String?) {
+    private fun agregarChickenMongolia(nombreCuenta: String?, numMesa: String?, numCuentas: String?) {
         val arrozBlanco: CheckBox = findViewById(R.id.checkBox)
         val arrozFrito: CheckBox = findViewById(R.id.checkBox2)
         val verdurasVapor: CheckBox = findViewById(R.id.checkBox3)
@@ -102,6 +105,7 @@ class EspecificacionChickeMongolia : AppCompatActivity() {
                         var intent = Intent(this@EspecificacionChickeMongolia, SeguirAgregando::class.java)
                         intent.putExtra("cuenta", nombreCuenta)
                         intent.putExtra("mesa", numMesa)
+                        intent.putExtra("numCuentas", numCuentas)
                         startActivity(intent)
                         finish()
                     }

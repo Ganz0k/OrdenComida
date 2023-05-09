@@ -26,11 +26,11 @@ class NuevaMesa : AppCompatActivity() {
         val ivVariasCuentas: ImageView = findViewById(R.id.iv_varias_cuentas)
 
         ivUnaCuenta.setOnClickListener {
-            creaMesa()
+            creaMesa("una")
         }
 
         ivVariasCuentas.setOnClickListener {
-            creaMesa()
+            creaMesa("varias")
         }
 
         btnRegresar.setOnClickListener {
@@ -40,7 +40,7 @@ class NuevaMesa : AppCompatActivity() {
         }
     }
 
-    private fun creaMesa() {
+    private fun creaMesa(numCuentas: String) {
         var etNumMesa: EditText = findViewById(R.id.et_numero_mesa)
 
         if (etNumMesa.text.isBlank()) {
@@ -68,6 +68,7 @@ class NuevaMesa : AppCompatActivity() {
 
                 var intent = Intent(this@NuevaMesa, MenuOrdenar::class.java)
                 intent.putExtra("mesa", numeroMesa)
+                intent.putExtra("numCuentas", numCuentas)
                 startActivity(intent)
                 finish()
             }

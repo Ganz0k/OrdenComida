@@ -22,6 +22,7 @@ class EspecificacionBoneless : AppCompatActivity() {
 
         var nombreCuenta: String? = ""
         var numMesa: String? = ""
+        var numCuentas: String? = ""
         val btnAgregar: Button = findViewById(R.id.btn_especificacion_agregar)
         val btnRegresar: Button = findViewById(R.id.btn_especificacion_regresar)
         val tvDescripcion: TextView = findViewById(R.id.tv_descripcion)
@@ -31,11 +32,12 @@ class EspecificacionBoneless : AppCompatActivity() {
         if (bundle != null) {
             nombreCuenta = bundle.getString("cuenta")
             numMesa = bundle.getString("mesa")
+            numCuentas = bundle.getString("numCuentas")
             tvDescripcion.setText(bundle.getString("descripcion"))
         }
 
         btnAgregar.setOnClickListener {
-            agregarBoneless(nombreCuenta, numMesa)
+            agregarBoneless(nombreCuenta, numMesa, numCuentas)
         }
 
         btnRegresar.setOnClickListener {
@@ -43,12 +45,13 @@ class EspecificacionBoneless : AppCompatActivity() {
             intent.putExtra("tipo", "entradas")
             intent.putExtra("mesa", numMesa)
             intent.putExtra("cuenta", nombreCuenta)
+            intent.putExtra("numCuentas", numCuentas)
             startActivity(intent)
             finish()
         }
     }
 
-    private fun agregarBoneless(nombreCuenta: String?, numMesa: String?) {
+    private fun agregarBoneless(nombreCuenta: String?, numMesa: String?, numCuentas: String?) {
         val salsaBbq: CheckBox = findViewById(R.id.checkBox)
         val salsaBufalo: CheckBox = findViewById(R.id.checkBox2)
         val salsaMixta: CheckBox = findViewById(R.id.checkBox3)
@@ -84,6 +87,7 @@ class EspecificacionBoneless : AppCompatActivity() {
                         var intent = Intent(this@EspecificacionBoneless, SeguirAgregando::class.java)
                         intent.putExtra("mesa", numMesa)
                         intent.putExtra("cuenta", nombreCuenta)
+                        intent.putExtra("numCuentas", numCuentas)
                         startActivity(intent)
                         finish()
                     }

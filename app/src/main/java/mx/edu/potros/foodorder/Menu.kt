@@ -12,6 +12,7 @@ class Menu : AppCompatActivity() {
         setContentView(R.layout.activity_menu)
 
         var nombreCuenta: String? = ""
+        var numCuentas: String? = ""
         var numMesa: String? = ""
         val tvNombreMesaCuenta: TextView = findViewById(R.id.tv_nombreMesaCuenta)
         val ivEntradas: ImageView = findViewById(R.id.iv_entradas)
@@ -27,6 +28,7 @@ class Menu : AppCompatActivity() {
             tvNombreMesaCuenta.setText("Cuenta de " + bundle.getString("cuenta") + "/Mesa" + bundle.getString("mesa"))
 
             nombreCuenta = bundle.getString("cuenta")
+            numCuentas = bundle.getString("numCuentas")
             numMesa = bundle.getString("mesa")
         }
 
@@ -35,6 +37,7 @@ class Menu : AppCompatActivity() {
             intent.putExtra("tipo", "entradas")
             intent.putExtra("cuenta", nombreCuenta)
             intent.putExtra("mesa", numMesa)
+            intent.putExtra("numCuentas", numCuentas)
             startActivity(intent)
             finish()
         }
@@ -44,6 +47,7 @@ class Menu : AppCompatActivity() {
             intent.putExtra("tipo", "rollos")
             intent.putExtra("cuenta", nombreCuenta)
             intent.putExtra("mesa", numMesa)
+            intent.putExtra("numCuentas", numCuentas)
             startActivity(intent)
             finish()
         }
@@ -53,6 +57,7 @@ class Menu : AppCompatActivity() {
             intent.putExtra("tipo", "platillos")
             intent.putExtra("cuenta", nombreCuenta)
             intent.putExtra("mesa", numMesa)
+            intent.putExtra("numCuentas", numCuentas)
             startActivity(intent)
             finish()
         }
@@ -62,6 +67,7 @@ class Menu : AppCompatActivity() {
             intent.putExtra("tipo", "extras")
             intent.putExtra("cuenta", nombreCuenta)
             intent.putExtra("mesa", numMesa)
+            intent.putExtra("numCuentas", numCuentas)
             startActivity(intent)
             finish()
         }
@@ -71,6 +77,7 @@ class Menu : AppCompatActivity() {
             intent.putExtra("tipo", "postres")
             intent.putExtra("cuenta", nombreCuenta)
             intent.putExtra("mesa", numMesa)
+            intent.putExtra("numCuentas", numCuentas)
             startActivity(intent)
             finish()
         }
@@ -80,6 +87,7 @@ class Menu : AppCompatActivity() {
             intent.putExtra("tipo", "bebidas")
             intent.putExtra("cuenta", nombreCuenta)
             intent.putExtra("mesa", numMesa)
+            intent.putExtra("numCuentas", numCuentas)
             startActivity(intent)
             finish()
         }

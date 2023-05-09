@@ -20,6 +20,7 @@ class SeguirAgregando : AppCompatActivity() {
 
         var numMesa: String? = ""
         var nombreCuenta: String? = ""
+        var numCuentas: String? = ""
         val btnSeguir: Button = findViewById(R.id.btn_seguir)
         val btnFinalizar: Button = findViewById(R.id.btn_finalizar)
 
@@ -28,22 +29,24 @@ class SeguirAgregando : AppCompatActivity() {
         if (bundle != null) {
             numMesa = bundle.getString("mesa")
             nombreCuenta = bundle.getString("cuenta")
+            numCuentas = bundle.getString("numCuentas")
         }
 
         btnSeguir.setOnClickListener {
             var intent = Intent(this, Menu::class.java)
             intent.putExtra("mesa", numMesa)
             intent.putExtra("cuenta", nombreCuenta)
+            intent.putExtra("numCuentas", numCuentas)
             startActivity(intent)
             finish()
         }
 
         btnFinalizar.setOnClickListener {
-            finalizarCuenta(numMesa, nombreCuenta)
+            finalizarCuenta(numMesa, nombreCuenta, numCuentas)
         }
     }
 
-    private fun finalizarCuenta(numMesa: String?, nombreCuenta: String?) {
+    private fun finalizarCuenta(numMesa: String?, nombreCuenta: String?, numCuentas: String?) {
         mesaRef.orderByChild("nombre").equalTo(numMesa).addListenerForSingleValueEvent(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 for (s in snapshot.children) {
@@ -55,6 +58,7 @@ class SeguirAgregando : AppCompatActivity() {
 
                         var intent = Intent(this@SeguirAgregando, FinCuenta::class.java)
                         intent.putExtra("mesa", numMesa)
+                        intent.putExtra("numCuentas", numCuentas)
                         startActivity(intent)
                         finish()
                     }

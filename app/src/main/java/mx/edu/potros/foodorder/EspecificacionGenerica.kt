@@ -21,6 +21,7 @@ class EspecificacionGenerica : AppCompatActivity() {
 
         var numMesa: String? = ""
         var nombreCuenta: String? = ""
+        var numCuentas: String? = ""
         var tipoPlatillo: String? = ""
         val btnMas: Button = findViewById(R.id.btn_especificacion_mas)
         val btnMenos: Button = findViewById(R.id.btn_especificacion_menos)
@@ -42,6 +43,7 @@ class EspecificacionGenerica : AppCompatActivity() {
             numMesa = bundle.getString("mesa")
             nombreCuenta = bundle.getString("cuenta")
             tipoPlatillo = bundle.getString("tipo")
+            numCuentas = bundle.getString("numCuentas")
         }
 
         btnMas.setOnClickListener {
@@ -75,7 +77,7 @@ class EspecificacionGenerica : AppCompatActivity() {
 
             try {
                 var cantidad = Integer.parseInt(txtCantidad)
-                agregarPlatillo(cantidad, tvNombre.text.toString(), nombreCuenta, numMesa)
+                agregarPlatillo(cantidad, tvNombre.text.toString(), nombreCuenta, numMesa, numCuentas)
             } catch (e: java.lang.Exception) {
                 System.err.println("Could not parse " + e)
             }
@@ -86,12 +88,13 @@ class EspecificacionGenerica : AppCompatActivity() {
             intent.putExtra("tipo", tipoPlatillo)
             intent.putExtra("mesa", numMesa)
             intent.putExtra("cuenta", nombreCuenta)
+            intent.putExtra("numCuentas", numCuentas)
             startActivity(intent)
             finish()
         }
     }
 
-    private fun agregarPlatillo(cantidad: Int, nombrePlatillo: String?, nombreCuenta: String?, numMesa: String?) {
+    private fun agregarPlatillo(cantidad: Int, nombrePlatillo: String?, nombreCuenta: String?, numMesa: String?, numCuentas: String?) {
         val platillo = PlatilloCuenta(cantidad, null, nombrePlatillo)
 
         cuentaRef.orderByChild("nombre").equalTo(nombreCuenta).addListenerForSingleValueEvent(object: ValueEventListener {
@@ -106,6 +109,7 @@ class EspecificacionGenerica : AppCompatActivity() {
                         var intent = Intent(this@EspecificacionGenerica, SeguirAgregando::class.java)
                         intent.putExtra("cuenta", nombreCuenta)
                         intent.putExtra("mesa", numMesa)
+                        intent.putExtra("numCuentas", numCuentas)
                         startActivity(intent)
                         finish()
                     }

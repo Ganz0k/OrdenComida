@@ -19,6 +19,7 @@ class Catalogo : AppCompatActivity() {
         setContentView(R.layout.activity_catalogo)
 
         var numMesa: String? = intent.getStringExtra("mesa")
+        var numCuentas: String? = intent.getStringExtra("numCuentas")
         var nombreCuenta: String? = intent.getStringExtra("cuenta")
 
         var menuOption: String? = intent.getStringExtra("tipo")
@@ -26,7 +27,7 @@ class Catalogo : AppCompatActivity() {
 
         var tvMenuOption: TextView = findViewById(R.id.tv_menu_option)
         val gridview: GridView = findViewById(R.id.gridView)
-        adapter = PlatilloAdapter(platillos, this, tvMenuOption, numMesa, nombreCuenta, menuOption)
+        adapter = PlatilloAdapter(platillos, this, tvMenuOption, numMesa, nombreCuenta, menuOption, numCuentas)
         gridview.adapter = adapter
 
         var button: Button = findViewById(R.id.btn_catalagoPlatillo_regresar)
@@ -61,6 +62,7 @@ class Catalogo : AppCompatActivity() {
             var intent = Intent(this, Menu::class.java)
             intent.putExtra("mesa", numMesa)
             intent.putExtra("cuenta", nombreCuenta)
+            intent.putExtra("numCuentas", numCuentas)
             startActivity(intent)
             finish()
         }
@@ -112,14 +114,16 @@ class Catalogo : AppCompatActivity() {
         var numMesa: String? = null
         var nombreCuenta: String? = null
         var tipoPlatillo: String? = null
+        var numCuentas: String? = null
 
-        constructor(platillos: ArrayList<Platillo>, context: Context?, option: TextView, numMesa: String?, nombreCuenta: String?, tipoPlatillo: String?): super() {
+        constructor(platillos: ArrayList<Platillo>, context: Context?, option: TextView, numMesa: String?, nombreCuenta: String?, tipoPlatillo: String?, numCuentas: String?): super() {
             this.platillos = platillos
             this.context = context
             this.option = option
             this.numMesa = numMesa
             this.nombreCuenta = nombreCuenta
             this.tipoPlatillo = tipoPlatillo
+            this.numCuentas = numCuentas
         }
 
         override fun getCount(): Int {
@@ -155,6 +159,7 @@ class Catalogo : AppCompatActivity() {
                     intent.putExtra("descripcion", platillo.descripcion)
                     intent.putExtra("mesa", numMesa)
                     intent.putExtra("cuenta", nombreCuenta)
+                    intent.putExtra("numCuentas", numCuentas)
                     context!!.startActivity(intent)
                     (context as AppCompatActivity).finish()
                 }
@@ -167,6 +172,7 @@ class Catalogo : AppCompatActivity() {
                     intent.putExtra("precio", platillo.precio)
                     intent.putExtra("mesa", numMesa)
                     intent.putExtra("cuenta", nombreCuenta)
+                    intent.putExtra("numCuentas", numCuentas)
                     context!!.startActivity(intent)
                     (context as AppCompatActivity).finish()
                 }
@@ -176,6 +182,7 @@ class Catalogo : AppCompatActivity() {
                     intent.putExtra("descripcion", platillo.descripcion)
                     intent.putExtra("mesa", numMesa)
                     intent.putExtra("cuenta", nombreCuenta)
+                    intent.putExtra("numCuentas", numCuentas)
                     context!!.startActivity(intent)
                     (context as AppCompatActivity).finish()
                 }
@@ -185,6 +192,7 @@ class Catalogo : AppCompatActivity() {
                     intent.putExtra("descripcion", platillo.descripcion)
                     intent.putExtra("mesa", numMesa)
                     intent.putExtra("cuenta", nombreCuenta)
+                    intent.putExtra("numCuentas", numCuentas)
                     context!!.startActivity(intent)
                     (context as AppCompatActivity).finish()
                 }
@@ -198,6 +206,7 @@ class Catalogo : AppCompatActivity() {
                     intent.putExtra("mesa", numMesa)
                     intent.putExtra("cuenta", nombreCuenta)
                     intent.putExtra("tipo", tipoPlatillo)
+                    intent.putExtra("numCuentas", numCuentas)
                     context!!.startActivity(intent)
                     (context as AppCompatActivity).finish()
                 }

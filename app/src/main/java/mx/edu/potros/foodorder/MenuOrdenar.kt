@@ -22,6 +22,7 @@ class MenuOrdenar : AppCompatActivity() {
         setContentView(R.layout.activity_menu_ordenar)
 
         var numeroMesa: String? = ""
+        var numCuentas: String? = ""
         val tvNumeroMesa: TextView = findViewById(R.id.tv_numeroMesa)
         val btnOrdenar: Button = findViewById(R.id.btn_ordenar)
         val btnRegresar: Button = findViewById(R.id.btn_regresar)
@@ -30,19 +31,24 @@ class MenuOrdenar : AppCompatActivity() {
 
         if (bundle != null) {
             numeroMesa = bundle.getString("mesa")
+            numCuentas = bundle.getString("numCuentas")
             tvNumeroMesa.setText("Mesa " + numeroMesa)
         }
 
         btnOrdenar.setOnClickListener {
-            crearCuenta(numeroMesa)
+            crearCuenta(numeroMesa, numCuentas)
         }
 
         btnRegresar.setOnClickListener {
             var intent = Intent(this, NuevaMesa::class.java)
+            //intent.putExtra("mesa", numeroMesa)
+            //intent.putExtra("numCuentas", numCuentas)
+            startActivity(intent)
+            finish()
         }
     }
 
-    private fun crearCuenta(mesa: String?) {
+    private fun crearCuenta(mesa: String?, numCuentas: String?) {
         var etNombreCuenta: EditText = findViewById(R.id.et_nombre_cuenta)
 
         if (etNombreCuenta.text.isBlank()) {
@@ -70,6 +76,7 @@ class MenuOrdenar : AppCompatActivity() {
 
                 var intent = Intent(this@MenuOrdenar, Menu::class.java)
                 intent.putExtra("mesa", mesa)
+                intent.putExtra("numCuentas", numCuentas)
                 intent.putExtra("cuenta", nombreCuenta)
                 startActivity(intent)
             }

@@ -10,17 +10,33 @@ class FinCuenta : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_fin_cuenta)
 
+        var numCuentas: String? = ""
+        var numMesa: String? = ""
         val btnAgregarCuenta: Button = findViewById(R.id.btn_agregar_cuenta)
         val btnIrPedido: Button = findViewById(R.id.btn_ir_pedido)
 
+        val bundle = intent.extras
+
+        if (bundle != null) {
+            numCuentas = bundle.getString("numCuentas")
+            numMesa = bundle.getString("mesa")
+        }
+
         btnAgregarCuenta.setOnClickListener {
-            var intent = Intent(this, MenuOrdenar::class.java)
-            startActivity(intent)
+            if (numCuentas != "varias") {
+                var intent = Intent(this, MenuOrdenar::class.java)
+                intent.putExtra("mesa", numMesa)
+                intent.putExtra("numCuentas", numCuentas)
+                startActivity(intent)
+                finish()
+            }
         }
 
         btnIrPedido.setOnClickListener {
             var intent = Intent(this, Cuenta::class.java)
+            intent.putExtra("mesa", numMesa)
             startActivity(intent)
+            finish()
         }
     }
 }
