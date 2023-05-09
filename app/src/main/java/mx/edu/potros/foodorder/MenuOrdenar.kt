@@ -79,6 +79,7 @@ class MenuOrdenar : AppCompatActivity() {
                         intent.putExtra("numCuentas", numCuentas)
                         intent.putExtra("cuenta", nombreCuenta)
                         startActivity(intent)
+                        finish()
                     }
                 }
             }
