@@ -23,7 +23,7 @@ class FinCuenta : AppCompatActivity() {
         }
 
         btnAgregarCuenta.setOnClickListener {
-            if (numCuentas != "varias") {
+            if (numCuentas == "varias") {
                 var intent = Intent(this, MenuOrdenar::class.java)
                 intent.putExtra("mesa", numMesa)
                 intent.putExtra("numCuentas", numCuentas)
