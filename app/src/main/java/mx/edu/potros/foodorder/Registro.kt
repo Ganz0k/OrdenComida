@@ -7,27 +7,33 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuthUserCollisionException
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.ktx.Firebase
 
 class Registro : AppCompatActivity() {
 
-    private val userRef = FirebaseDatabase.getInstance().getReference("Users")
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registro)
 
+        auth = Firebase.auth
+
         val btnCrear: Button = findViewById(R.id.btn_crear)
 
         btnCrear.setOnClickListener {
-            saveMarkFromForm()
+            signUp()
         }
     }
 
-    private fun saveMarkFromForm() {
+    private fun signUp() {
         var etCorreo: EditText = findViewById(R.id.input_correo)
         var etPassword: EditText = findViewById(R.id.input_password)
         var etVerifyPassword: EditText = findViewById(R.id.inpud_verify_password)
@@ -47,28 +53,23 @@ class Registro : AppCompatActivity() {
             return
         }
 
-        userRef.orderByChild("correo").equalTo(correo).addListenerForSingleValueEvent(object: ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                for (s in snapshot.children) {
-                    val usuarioExistente = s.getValue(User::class.java)
-
-                    if (usuarioExistente != null) {
-                        Toast.makeText(this@Registro, "Un usuario con ese correo ya existe", Toast.LENGTH_SHORT).show()
-                        return
-                    }
-                }
-
-                val usuario = User(correo, password)
-
-                userRef.push().setValue(usuario)
+        auth.createUserWithEmailAndPassword(correo, password).addOnCompleteListener(this) { task ->
+            if (task.isSuccessful) {
                 Toast.makeText(this@Registro, "Usuario registrado exitosamente", Toast.LENGTH_SHORT).show()
-
-                var intent = Intent(this@Registro, Bienvenido::class.java)
-                startActivity(intent)
-                finish()
+                reload()
+            } else {
+                if (task.exception is FirebaseAuthUserCollisionException) {
+                    Toast.makeText(this@Registro, "Ese usuario ya existe", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(this@Registro, "No se pudo registrar el usuario", Toast.LENGTH_SHORT).show()
+                }
             }
+        }
+    }
 
-            override fun onCancelled(error: DatabaseError) {}
-        })
+    private fun reload() {
+        val intent = Intent(this, Bienvenido::class.java)
+        startActivity(intent)
+        finish()
     }
 }

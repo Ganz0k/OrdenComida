@@ -6,18 +6,28 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.ktx.Firebase
 
 class MainActivity : AppCompatActivity() {
 
-    private val userRef = FirebaseDatabase.getInstance().getReference("Users")
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        auth = Firebase.auth
+        val currentUser = auth.currentUser
+
+        if (currentUser != null) {
+            reload()
+        }
 
         val btnOlvidasteContra: Button = findViewById(R.id.btn_olvidasteContra)
         val btnLogin: Button = findViewById(R.id.btn_login)
@@ -50,30 +60,19 @@ class MainActivity : AppCompatActivity() {
         var usuario: String = etUsuario.text.toString().trim()
         var password: String = etPassword.text.toString().trim()
 
-        userRef.orderByChild("correo").equalTo(usuario).addListenerForSingleValueEvent(object: ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                if (snapshot.exists()) {
-                    var usuarioExistente: User? = null
-
-                    for (s in snapshot.children) {
-                        usuarioExistente = s.getValue(User::class.java)
-
-                        if (usuarioExistente != null && usuarioExistente.password == password) {
-                            Toast.makeText(this@MainActivity, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show()
-                            var intent = Intent(this@MainActivity, Bienvenido::class.java)
-                            startActivity(intent)
-                            finish()
-                            return
-                        }
-                    }
-
-                    Toast.makeText(this@MainActivity, "Usuario y/o contraseña incorrectos", Toast.LENGTH_SHORT).show()
-                } else {
-                    Toast.makeText(this@MainActivity, "Usuario y/o contraseña incorrectos", Toast.LENGTH_SHORT).show()
-                }
+        auth.signInWithEmailAndPassword(usuario, password).addOnCompleteListener(this) { task ->
+            if (task.isSuccessful) {
+                Toast.makeText(this@MainActivity, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show()
+                reload()
+            } else {
+                Toast.makeText(this@MainActivity, "Hubo un problema al iniciar sesión", Toast.LENGTH_SHORT).show()
             }
+        }
+    }
 
-            override fun onCancelled(error: DatabaseError) {}
-        })
+    private fun reload() {
+        val intent = Intent(this, Bienvenido::class.java)
+        startActivity(intent)
+        finish()
     }
 }
