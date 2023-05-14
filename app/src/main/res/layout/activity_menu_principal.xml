@@ -18,82 +18,114 @@
         android:gravity="center"
         android:layout_marginTop="100dp"/>
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="195dp"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:fillViewport="true">
 
-        <LinearLayout
-            android:layout_width="110dp"
-            android:layout_height="100dp"
-            android:orientation="vertical"
-            android:layout_gravity="center"
-            android:layout_marginRight="8dp"
-            android:layout_marginLeft="15dp"
-            android:background="@drawable/round_view"
-            android:backgroundTint="@color/amarillento">
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
-                android:gravity="center"
-                android:text="Mesa 1"
-                android:fontFamily="@font/inter_bold"
-                android:textSize="16sp"
-                android:textColor="@color/naranja"/>
-        </LinearLayout>
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
 
-        <LinearLayout
-            android:layout_width="150dp"
-            android:layout_height="135dp"
-            android:layout_gravity="center"
-            android:background="@drawable/round_view"
-            android:backgroundTint="@color/amarillento"
-            android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="150dp"
+                    android:layout_height="135dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/round_view"
+                    android:backgroundTint="@color/amarillento"
+                    android:orientation="vertical"
+                    android:layout_marginEnd="10dp" >
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="45dp"
-                android:gravity="center"
-                android:text="Mesa 3"
-                android:fontFamily="@font/inter_bold"
-                android:textSize="20sp"
-                android:textColor="@color/naranja"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="45dp"
+                        android:gravity="center"
+                        android:text="Mesa 3"
+                        android:fontFamily="@font/inter_bold"
+                        android:textSize="20sp"
+                        android:textColor="@color/naranja"/>
 
-            <TextView
-                android:id="@+id/tvOrden"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/ordenLista"
-                android:fontFamily="@font/inter_bold"
-                android:textSize="13sp"
-                android:textColor="@color/white"/>
-        </LinearLayout>
+                    <TextView
+                        android:id="@+id/tvOrden"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/ordenLista"
+                        android:fontFamily="@font/inter_bold"
+                        android:textSize="13sp"
+                        android:textColor="@color/white"/>
+                </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="110dp"
-            android:layout_height="100dp"
-            android:orientation="vertical"
-            android:layout_gravity="center"
-            android:layout_marginRight="15dp"
-            android:layout_marginLeft="8dp"
-            android:background="@drawable/round_view"
-            android:backgroundTint="@color/amarillento">
+                <LinearLayout
+                    android:layout_width="150dp"
+                    android:layout_height="135dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/round_view"
+                    android:backgroundTint="@color/amarillento"
+                    android:orientation="vertical"
+                    android:layout_marginEnd="10dp" >
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
-                android:gravity="center"
-                android:text="Mesa 5"
-                android:fontFamily="@font/inter_bold"
-                android:textSize="16sp"
-                android:textColor="@color/naranja"/>
-        </LinearLayout>
-    </LinearLayout>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="45dp"
+                        android:gravity="center"
+                        android:text="Mesa 3"
+                        android:fontFamily="@font/inter_bold"
+                        android:textSize="20sp"
+                        android:textColor="@color/naranja"/>
+
+                    <TextView
+                        android:id="@+id/tvOrden"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/ordenLista"
+                        android:fontFamily="@font/inter_bold"
+                        android:textSize="13sp"
+                        android:textColor="@color/white"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="150dp"
+                    android:layout_height="135dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/round_view"
+                    android:backgroundTint="@color/amarillento"
+                    android:orientation="vertical"
+                    android:layout_marginEnd="10dp" >
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="45dp"
+                        android:gravity="center"
+                        android:text="Mesa 3"
+                        android:fontFamily="@font/inter_bold"
+                        android:textSize="20sp"
+                        android:textColor="@color/naranja"/>
+
+                    <TextView
+                        android:id="@+id/tvOrden"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/ordenLista"
+                        android:fontFamily="@font/inter_bold"
+                        android:textSize="13sp"
+                        android:textColor="@color/white"/>
+                </LinearLayout>
+
+            </LinearLayout>
+        </HorizontalScrollView>
+    </ScrollView>
 
     <ImageView
         android:id="@+id/btnOrdenar"
@@ -124,4 +156,6 @@
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:layout_marginTop="25dp"/>
+
+
 </LinearLayout>

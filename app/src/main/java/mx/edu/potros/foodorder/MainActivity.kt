@@ -5,13 +5,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
 import com.google.firebase.ktx.Firebase
 
 class MainActivity : AppCompatActivity() {
@@ -29,11 +26,11 @@ class MainActivity : AppCompatActivity() {
             reload()
         }
 
-        val btnOlvidasteContra: Button = findViewById(R.id.btn_olvidasteContra)
+        val tvOlvidasteContra: TextView = findViewById(R.id.tv_olvidasteContra)
         val btnLogin: Button = findViewById(R.id.btn_login)
         val btnRegistro: Button = findViewById(R.id.btn_crearCuenta)
 
-        btnOlvidasteContra.setOnClickListener {
+        tvOlvidasteContra.setOnClickListener {
             var intent = Intent(this, LoginVerificacion::class.java)
             startActivity(intent)
         }
