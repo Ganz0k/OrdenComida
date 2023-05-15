@@ -15,6 +15,7 @@ import android.widget.ScrollView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
+import androidx.core.view.marginEnd
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -29,13 +30,11 @@ class MenuPrincipal : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu_principal)
 
-        val scrollView: ScrollView = findViewById(R.id.scroll_view)
-        val horizontalScrollView: HorizontalScrollView = findViewById(R.id.horizontal_scroll_view)
         val containerLayout: LinearLayout = findViewById(R.id.linear_layout)
         val btnCerrarSesion: Button = findViewById(R.id.btn_cerrarSesion)
         val btnOrdenar: ImageView = findViewById(R.id.btnOrdenar)
 
-        cargarMesas(scrollView, horizontalScrollView, containerLayout)
+        cargarMesas(containerLayout)
 
         btnCerrarSesion.setOnClickListener{
             var intent = Intent(this, Salir::class.java)
@@ -50,7 +49,7 @@ class MenuPrincipal : AppCompatActivity() {
         }
     }
 
-    private fun cargarMesas(scrollView: ScrollView, horizontalScrollView: HorizontalScrollView, containerLayout: LinearLayout) {
+    private fun cargarMesas(containerLayout: LinearLayout) {
         mesaRef.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 for (s in snapshot.children) {
@@ -58,22 +57,22 @@ class MenuPrincipal : AppCompatActivity() {
                     mesa?.let { mesas.add(it) }
                 }
 
-                cargarHorizontalScrollView(scrollView, horizontalScrollView, containerLayout)
+                cargarHorizontalScrollView(containerLayout)
             }
 
             override fun onCancelled(error: DatabaseError) {}
         })
     }
 
-    private fun cargarHorizontalScrollView(scrollView: ScrollView, horizontalScrollView: HorizontalScrollView, containerLayout: LinearLayout) {
+    private fun cargarHorizontalScrollView(containerLayout: LinearLayout) {
         for (mesa in mesas) {
             val campoMesa = LinearLayout(this)
-            val scale = resources.displayMetrics.density
             campoMesa.layoutParams = LinearLayout.LayoutParams(dpToPx(150f).toInt(), dpToPx(135f).toInt())
             campoMesa.orientation = LinearLayout.VERTICAL
             campoMesa.setBackgroundResource(R.drawable.round_view)
             campoMesa.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(this, R.color.amarillento))
             campoMesa.setPadding(dpToPx(10f).toInt(), 0, dpToPx(10f).toInt(), 0)
+
 
             val nombreMesa = TextView(this)
             nombreMesa.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)
