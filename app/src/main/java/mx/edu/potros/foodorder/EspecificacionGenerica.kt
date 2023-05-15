@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -73,14 +74,29 @@ class EspecificacionGenerica : AppCompatActivity() {
         }
 
         btnAgregar.setOnClickListener {
-            var txtCantidad = tvCantidad.text.toString()
+            val builder = AlertDialog.Builder(this)
+            builder.setTitle("Confirmación")
+            builder.setMessage("¿Estás seguro de agregar ese platillo?")
 
-            try {
-                var cantidad = Integer.parseInt(txtCantidad)
-                agregarPlatillo(cantidad, tvNombre.text.toString(), nombreCuenta, numMesa, numCuentas)
-            } catch (e: java.lang.Exception) {
-                System.err.println("Could not parse " + e)
+            builder.setPositiveButton("Si") { dialog, which ->
+                var txtCantidad = tvCantidad.text.toString()
+
+                try {
+                    var cantidad = Integer.parseInt(txtCantidad)
+                    agregarPlatillo(cantidad, tvNombre.text.toString(), nombreCuenta, numMesa, numCuentas)
+                } catch (e: java.lang.Exception) {
+                    System.err.println("Could not parse " + e)
+                }
             }
+
+            builder.setNegativeButton("No") { dialog, which ->
+                dialog.dismiss()
+            }
+
+            builder.setCancelable(false)
+
+            val dialog = builder.create()
+            dialog.show()
         }
 
         btnRegresar.setOnClickListener {

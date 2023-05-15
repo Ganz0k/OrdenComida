@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.appcompat.app.AlertDialog
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -49,7 +50,22 @@ class Cuenta : AppCompatActivity() {
         }
 
         btnEnviarPedido.setOnClickListener {
-            borrarMesa(numMesa)
+            val builder = AlertDialog.Builder(this)
+            builder.setTitle("Confirmación")
+            builder.setMessage("¿Estás seguro de enviar ese pedido?")
+
+            builder.setPositiveButton("Si") { dialog, which ->
+                borrarMesa(numMesa)
+            }
+
+            builder.setNegativeButton("No") { dialog, which ->
+                dialog.dismiss()
+            }
+
+            builder.setCancelable(false)
+
+            val dialog = builder.create()
+            dialog.show()
         }
     }
 

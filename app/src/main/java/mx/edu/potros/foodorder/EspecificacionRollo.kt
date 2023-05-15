@@ -8,6 +8,7 @@ import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -44,7 +45,22 @@ class EspecificacionRollo : AppCompatActivity() {
         }
 
         btnAgregar.setOnClickListener {
-            agregarRollo(tvNombre.text.toString(), nombreCuenta, numMesa, numCuentas)
+            val builder = AlertDialog.Builder(this)
+            builder.setTitle("Confirmación")
+            builder.setMessage("¿Estás seguro de agregar ese platillo?")
+
+            builder.setPositiveButton("Si") { dialog, which ->
+                agregarRollo(tvNombre.text.toString(), nombreCuenta, numMesa, numCuentas)
+            }
+
+            builder.setNegativeButton("No") { dialog, which ->
+                dialog.dismiss()
+            }
+
+            builder.setCancelable(false)
+
+            val dialog = builder.create()
+            dialog.show()
         }
 
         btnRegresar.setOnClickListener {

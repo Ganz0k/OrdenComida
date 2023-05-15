@@ -48,7 +48,11 @@ class CobraCuenta : AppCompatActivity() {
                     val cuentaBorrar = CuentaBD(nombreCuenta)
 
                     if (mesa!!.cuentas!!.remove(cuentaBorrar)) {
-                        s.ref.setValue(mesa)
+                        if (mesa.cuentas!!.size == 0) {
+                            s.ref.removeValue()
+                        } else {
+                            s.ref.setValue(mesa)
+                        }
 
                         Toast.makeText(this@CobraCuenta, "La cuenta ha sido enviada a caja", Toast.LENGTH_LONG).show()
                         val intent = Intent(this@CobraCuenta, MenuPrincipal::class.java)
