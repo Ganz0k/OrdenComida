@@ -20,9 +20,6 @@
             android:name=".CobraCuenta"
             android:exported="false" />
         <activity
-            android:name=".EliminaProducto"
-            android:exported="false" />
-        <activity
             android:name=".FinCuenta"
             android:exported="false" />
         <activity
@@ -45,12 +42,6 @@
             android:exported="false" />
         <activity
             android:name=".LoginVerificacion"
-            android:exported="false" />
-        <activity
-            android:name=".CodigoIncorrecto"
-            android:exported="false" />
-        <activity
-            android:name=".Confirmed"
             android:exported="false" />
         <activity
             android:name=".Catalogo"

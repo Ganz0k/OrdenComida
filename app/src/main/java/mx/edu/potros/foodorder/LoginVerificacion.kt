@@ -12,10 +12,6 @@ class LoginVerificacion : AppCompatActivity() {
 
         val btnVerificaLogin: Button = findViewById(R.id.btn_verificar_login)
 
-        btnVerificaLogin.setOnClickListener {
-            var intent = Intent(this, CodigoIncorrecto::class.java)
-            intent.putExtra("tipo", "codigo")
-            startActivity(intent)
-        }
+
     }
 }

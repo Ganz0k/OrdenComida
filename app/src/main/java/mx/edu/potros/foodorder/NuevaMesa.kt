@@ -6,7 +6,9 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.Spinner
 import android.widget.Toast
+import androidx.core.view.get
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -41,14 +43,10 @@ class NuevaMesa : AppCompatActivity() {
     }
 
     private fun creaMesa(numCuentas: String) {
-        var etNumMesa: EditText = findViewById(R.id.et_numero_mesa)
+        var numMesa: Spinner = findViewById(R.id.spinner_numero_mesa)
 
-        if (etNumMesa.text.isBlank()) {
-            Toast.makeText(this, "El número de la mesa no puede estar vacío", Toast.LENGTH_SHORT).show()
-            return
-        }
 
-        var numeroMesa: String = etNumMesa.text.toString().trim()
+        var numeroMesa: String = numMesa.selectedItem.toString()
 
         mesaRef.orderByChild("nombre").equalTo(numeroMesa).addListenerForSingleValueEvent(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {

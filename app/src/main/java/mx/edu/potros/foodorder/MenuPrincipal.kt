@@ -65,9 +65,12 @@ class MenuPrincipal : AppCompatActivity() {
     }
 
     private fun cargarHorizontalScrollView(containerLayout: LinearLayout) {
+        val layoutParams = LinearLayout.LayoutParams(dpToPx(150f).toInt(), dpToPx(135f).toInt())
+        layoutParams.setMargins(dpToPx(10f).toInt(), 0, dpToPx(10f).toInt(), 0)
+
         for (mesa in mesas) {
             val campoMesa = LinearLayout(this)
-            campoMesa.layoutParams = LinearLayout.LayoutParams(dpToPx(150f).toInt(), dpToPx(135f).toInt())
+            campoMesa.layoutParams = layoutParams
             campoMesa.orientation = LinearLayout.VERTICAL
             campoMesa.setBackgroundResource(R.drawable.round_view)
             campoMesa.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(this, R.color.amarillento))
@@ -97,7 +100,6 @@ class MenuPrincipal : AppCompatActivity() {
                 val intent = Intent(this, Cuenta::class.java)
                 intent.putExtra("mesa", mesa.nombre)
                 startActivity(intent)
-                finish()
             }
 
             containerLayout.addView(campoMesa)
